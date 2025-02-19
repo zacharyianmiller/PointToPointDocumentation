@@ -186,7 +186,7 @@ p {
 }
 
 .section {
-    padding: 180px 0;
+    padding: 25px 0;
     position: relative;
     display: block;
 }
@@ -241,7 +241,7 @@ h4 a {
 }
 
 .intro1 {
-    margin-top: 22px;
+    margin-top: 2px;
     padding: 30px 0px;
     background-color: #f3f3f3;
 }
@@ -324,6 +324,12 @@ a:hover {
     font-weight: bold;
 }
 
+.intro3 {
+    margin-top: 2px;
+    padding: 30px;
+    background-color: #f3f3f3;
+}
+
 .intro1 ul {
     padding: 0 30px;
 }
@@ -368,6 +374,66 @@ a:hover {
 .navbar-inverse li.btn a {
     color: #ffffff !important;
 }
+
+.underline {
+    text-decoration: underline
+}
+
+.barcode{
+    white-space:pre; /* or pre-wrap if you want wrapping to still work. */
+}
+
+/* ----------------------------------------------------------------- */
+
+/* Tooltip container */
+.tooltip {
+  display: inline;
+  position: relative;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  white-space: nowrap;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: gray;
+  color: #fff;
+  text-align: left;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  min-width: 250px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 25%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 #myBtn {
   display: none;
   position: fixed;
