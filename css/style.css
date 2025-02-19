@@ -398,22 +398,23 @@ a:hover {
   visibility: hidden;
   background-color: gray;
   color: #fff;
+  font-size: 13px;
   text-align: left;
   padding: 5px 10px;
   border-radius: 4px;
   white-space: pre-wrap;
-  min-width: 250px;
+  min-width: 400px;
 
   /* Position the tooltip text */
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 25%;
+  bottom: 117%;
+  left: -100%;
   margin-left: -60px;
 
   /* Fade in tooltip */
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.4s;
 }
 
 /* Tooltip arrow */
@@ -432,6 +433,12 @@ a:hover {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+#logoPos {
+    position: absolute;
+    align-content: center;
+    vertical-align: middle;
 }
 
 #myBtn {
@@ -454,4 +461,11 @@ a:hover {
 
 #myBtn:hover {
   background-color: #404040;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+    margin-top: 15px;
 }
