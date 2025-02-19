@@ -5828,12 +5828,13 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-size: 12px;
+  max-width: 400px;
+  font-size: 14px;
   font-weight: normal;
   line-height: 1.4;
   visibility: visible;
-  filter: alpha(opacity=0);
-  opacity: 0;
+  filter: alpha(opacity=1);
+  opacity: 1;
 }
 .tooltip.in {
   filter: alpha(opacity=90);
@@ -6568,5 +6569,3 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-
-
