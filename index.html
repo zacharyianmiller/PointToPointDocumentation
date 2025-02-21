@@ -555,7 +555,7 @@
     &lt;/child&gt;
 &lt;/root&gt;</pre>
                         
-                        <p>The XML circuits follow standard XML syntax. Because each file should support Unicode, specify as such in the script's prolog. Also, set the root (or "parent") element for the script as such:</p>
+                        <p>The XML circuits follow standard XML syntax. Because each file should support Unicode, specify as such in the script's prolog. Also, set the root (or "parent") element for the script as a "PointToPointCircuit".</p>
                         
                         <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;PointToPointCircuit&gt;
@@ -564,20 +564,49 @@
     
 &lt;/PointToPointCircuit&gt;</pre>
                         
-                        <p>Consider the following RC lowpass filter as the base example for our custom XML script:</p>
-                        <img src="images/RCLPF.svg" alt="rclpf" style="width:350px;display:block;margin-left:auto;margin-right:auto">
+                        <p>Consider the following RC lowpass filter as an example for our custom XML script:</p>
+                        <img src="images/RCLPF.svg" alt="rclpf" style="width:350px" class="aligncenter">
 
                         <p>A circuit name and category are necessary to keep like circuits organized. Circuit categories are usually based on the medium for which the circuit is predominately used (e.g., guitar amplifiers or pedals, basic filters or equalizers, etc.) and any other pertinent subcategories (e.g., tone stack).</p>
                         <p>First define the preferred name and of what circuit family you want it to belong to. Inside a "Settings" tag, the total number of nodes and a <a href="#appx_dc">digital DC blocker</a> flag are instantiated. If you are using these circuits inside the Analog Circuit Factory plug-in, an additional output trim knob can be populated by adding an "Output" tag with its defaulting value [0,1]. In custom circuits, this can otherwise be replicated by a digital linear gain parameter on the output signal.</p>
                         
-    <pre>&lt;Name&gt;CustomCircuit&lt;/Name&gt;
-    &lt;Category&gt;CustomCategory&lt;/Category&gt;
-    &lt;Settings&gt;  
-        &lt;numNodes&gt;8&lt;/numNodes&gt;
-        &lt;hasDCBlocker&gt;false&lt;/hasDCBlocker&gt;
-        &lt;Output&gt;1&lt;/Output&gt;
-    &lt;/Settings&gt;
+    <pre>&lt;Name&gt;RCLPF&lt;/Name&gt;
+&lt;Category&gt;BasicFilters&lt;/Category&gt;
+&lt;Settings&gt;  
+    &lt;numNodes&gt;3&lt;/numNodes&gt;
+    &lt;hasDCBlocker&gt;false&lt;/hasDCBlocker&gt;
+&lt;/Settings&gt;
 </pre>
+
+                        <p>Similar to our settings definition, our circuit elements are defined under specific element-specific tags. Elements can be added in no particular order with no limit. If one or more of an element is present in a circuit, each instance in the script should be enclosed by a parent tag (e.g., Rs, VarRs, Pots, Cs, Ds, OPAmps, BJTs, Tube12AX7s or Vs for voltage sources) and each individual  element should enclose its parameters with a child tag (e.g., Resistor, VariableResistor, Potentiometer, Capacitor, Diode, OPAmp, Tube or VoltageSource). Variable resistors and potentiometers support a label class to organize your knobs. Voltage inputs and outputs only should exist once for a given circuit model, so a parent tag is not required.</p>
+                        <p>When a component is wired to ground, you should always use <b>Node #2</b> for the zero value.</p>
+                        
+                            <pre>&lt;Elements&gt; 
+    &lt;VoltageInput&gt; 
+        &lt;node1&gt;1&lt;/node1&gt; 
+        &lt;node2&gt;0&lt;/node2&gt; 
+    &lt;/VoltageInput&gt; 
+    &lt;VoltageOutput&gt; 
+        &lt;node1&gt;2&lt;/node1&gt; 
+        &lt;node2&gt;0&lt;/node2&gt; 
+    &lt;/VoltageOutput&gt; 
+    &lt;Rs&gt; 
+        &lt;Resistor&gt;
+            &lt;value&gt;1000&lt;/value&gt;
+            &lt;node1&gt;1&lt;/node1&gt;
+            &lt;node2&gt;2&lt;/node2&gt;
+        &lt;/Resistor&gt; 
+    &lt;/Rs&gt; 
+    &lt;Cs&gt; 
+        &lt;Capacitor&gt;
+            &lt;value&gt;10e-6&lt;/value&gt;
+            &lt;node1&gt;2&lt;/node1&gt;
+            &lt;node2&gt;0&lt;/node2&gt;
+        &lt;/Capacitor&gt; 
+    &lt;/Cs&gt; 
+&lt;/Elements&gt;
+</pre>
+                        <p>For an XML template that supports all circuit elements, click <a href="templates/templateCircuit.xml" download="templateCircuit.xml"> here</a>.</p>
 
                         <h4 id="line5_3">MATLAB</h4>
                         <p> [ ... ]</p>
