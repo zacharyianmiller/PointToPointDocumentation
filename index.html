@@ -67,10 +67,7 @@
 
     </script>
 
-    <div id="wrapper">
-
-        <!-- LIGHT MODE ONLY MODE FOR RIGHT NOW -->
-        
+    <div id="wrapper">        
         <div id="mode" >
             <div class="dark">
                 <svg aria-hidden="true" viewBox="0 0 512 512">
@@ -314,13 +311,20 @@
                     
                         <!-- Voltage I/O Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>Voltage Input/Output</u></b></h6>
-                        <table class="centerTable" style="min-width:275px">
+                        <table class="centerTable" style="min-width:400px">
                             <tr>
-                                <td class="tableText" style="color:black">Node 1 (input)</td>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Node 1 (input)</td>
+                                <td class="tableText">&lt;node1&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 2 (output)</td>
+                                <td class="tableText">&lt;node2&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                         </table>
@@ -329,13 +333,20 @@
 
                         <!-- Voltage Source Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>Voltage Source</u></b></h6>
-                        <table class="centerTable" style="min-width:410px">
+                        <table class="centerTable" style="min-width:400px">
+                            <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
                             <tr>
                                 <td class="tableText">Voltage</td>
+                                <td class="tableText">&lt;voltage&gt;</td>
                                 <td class="tableText">Value in volts (V)</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node</td>
+                                <td class="tableText">&lt;node&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                         </table>
@@ -344,17 +355,25 @@
 
                         <!-- Static Resistor Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>Static Resistor</u></b></h6>
-                        <table class="centerTable" style="min-width:425px">
+                        <table class="centerTable" style="min-width:400px">
+                            <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
                             <tr>
                                 <td class="tableText">Resistance</td>
+                                <td class="tableText">&lt;value&gt;</td>
                                 <td class="tableText">Value in ohms (Ω)</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 1 (input)</td>
+                                <td class="tableText">&lt;node1&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 2 (output)</td>
+                                <td class="tableText">&lt;node2&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                         </table>
@@ -363,33 +382,45 @@
                         
                         <!-- Variable Resistor Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>Variable Resistor</u></b></h6>
-                        <table class="centerTable" style="min-width:515px">
+                        <table class="centerTable" style="min-width:400px">
+                            <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
                             <tr>
                                 <td class="tableText">Parameter number</td>
+                                <td class="tableText">&lt;parameterNumber&gt;</td>
                                 <td class="tableText">[1,N<sub>VR</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Direction</td>
-                                <td class="tableText">Proportional, inversely proportional</td>
+                                <td class="tableText">&lt;Direction&gt;</td>
+                                <td class="tableText">PROPORTIONAL, INVPROPORTIONAL</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Skew</td>
-                                <td class="tableText">Linear, logarithmic</td>
+                                <td class="tableText">&lt;Skew&gt;</td>
+                                <td class="tableText">LINEAR, LOG</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 1 (input)</td>
+                                <td class="tableText">&lt;node1&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 2 (output)</td>
+                                <td class="tableText">&lt;node2&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Maxiumum resistance</td>
+                                <td class="tableText">&lt;maxValue&gt;</td>
                                 <td class="tableText">Value in ohms (Ω)</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Initialization value</td>
+                                <td class="tableText">&lt;initValue&gt;</td>
                                 <td class="tableText">Value in ohms (Ω)</td>
                             </tr>
                         </table>
@@ -398,37 +429,50 @@
                         
                         <!-- Potentiometer Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>Potentiometer</u></b></h6>
-                        <table class="centerTable" style="min-width:515px">
+                        <table class="centerTable" style="min-width:400px">
+                            <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
                             <tr>
                                 <td class="tableText">Parameter number</td>
+                                <td class="tableText">&lt;parameterNumber&gt;</td>
                                 <td class="tableText">[1,N<sub>VR</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Direction</td>
-                                <td class="tableText">Proportional, inversely proportional</td>
+                                <td class="tableText">&lt;Direction&gt;</td>
+                                <td class="tableText">PROPORTIONAL, INVPROPORTIONAL</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Skew</td>
-                                <td class="tableText">Linear, logarithmic</td>
+                                <td class="tableText">&lt;Skew&gt;</td>
+                                <td class="tableText">LINEAR, LOG</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 1 (input)</td>
+                                <td class="tableText">&lt;node1&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 2 (divider)</td>
+                                <td class="tableText">&lt;node2&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 3 (output)</td>
+                                <td class="tableText">&lt;node3&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Maxiumum resistance</td>
+                                <td class="tableText">&lt;maxValue&gt;</td>
                                 <td class="tableText">Value in ohms (Ω)</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Initialization value</td>
+                                <td class="tableText">&lt;InitValue&gt;</td>
                                 <td class="tableText">Value in ohms (Ω)</td>
                             </tr>
                         </table>
@@ -437,17 +481,25 @@
                         
                         <!-- Capacitor Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>Capacitor</u></b></h6>
-                        <table class="centerTable" style="min-width:450px">
+                        <table class="centerTable" style="min-width:400px">
+                            <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
                             <tr>
                                 <td class="tableText">Capacitance</td>
+                                <td class="tableText">&lt;value&gt;</td>
                                 <td class="tableText">Value in farads (F)</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 1 (input)</td>
+                                <td class="tableText">&lt;node1&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 2 (input)</td>
+                                <td class="tableText">&lt;node2&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                         </table>
@@ -456,17 +508,25 @@
                         
                         <!-- Op-amp Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>Op-amp</u></b></h6>
-                        <table class="centerTable" style="min-width:275px">
+                        <table class="centerTable" style="min-width:400px">
+                            <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
                             <tr>
                                 <td class="tableText">Non-inverting node</td>
+                                <td class="tableText">&lt;nonInvertingNode&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Inverting node</td>
+                                <td class="tableText">&lt;invertingNode&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Output node</td>
+                                <td class="tableText">&lt;outputNode&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                         </table>
@@ -477,23 +537,43 @@
                         <h6 style="text-align:center;bottom: -15px"><b><u>Diode</u></b></h6>
                         <table class="centerTable" style="min-width:400px">
                             <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
+                            <tr>
                                 <td class="tableText">Node 1 (input)</td>
+                                <td class="tableText">&lt;node1&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Node 2 (output)</td>
+                                <td class="tableText">&lt;node2&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Semiconductor type</td>
-                                <td class="tableText">Silicon, germanium</td>
+                                <td class="tableText">&lt;Semiconductor&gt;</td>
+                                <td class="tableText">SILICON, GERMANIUM</td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Configuration</td>
+                                <td class="tableText">&lt;Configuration&gt;</td>
+                                <td class="tableText">SINGLE, MATCHEDPAIR</td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Saturation current</td>
+                                <td class="tableText">&lt;SaturationCurrent&gt;</td>
+                                <td class="tableText">1e-12 (silicon), 1e-6 (germanium)</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Thermal voltage</td>
+                                <td class="tableText">&lt;ThermalVoltage&gt;</td>
                                 <td class="tableText">[0.026]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Emission coefficient</td>
+                                <td class="tableText">&lt;EmissionCoeff&gt;</td>
                                 <td class="tableText">[1,2]</td>
                             </tr>
                         </table>
@@ -502,18 +582,51 @@
                         
                         <!-- BJT Table -->
                         <h6 style="text-align:center;bottom: -15px"><b><u>BJT</u></b></h6>
-                        <table class="centerTable" style="min-width:275px">
+                        <table class="centerTable" style="min-width:400px">
                             <tr>
-                                <td class="tableText">Non-inverting node</td>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Base node</td>
+                                <td class="tableText">&lt;nodeBase&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
-                                <td class="tableText">Inverting node</td>
+                                <td class="tableText">Collector node</td>
+                                <td class="tableText">nodeCollector</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
-                                <td class="tableText">Output node</td>
+                                <td class="tableText">Emitter node</td>
+                                <td class="tableText">nodeEmitter</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Semiconductor type</td>
+                                <td class="tableText">&lt;Semiconductor&gt;</td>
+                                <td class="tableText">SILICON, GERMANIUM</td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Doping type</td>
+                                <td class="tableText">&lt;Doping&gt;</td>
+                                <td class="tableText">NPN, PNP</td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Saturation current</td>
+                                <td class="tableText">&lt;SaturationCurrent&gt;</td>
+                                <td class="tableText">1e-12 (silicon), 1e-6 (germanium)</td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Thermal voltage</td>
+                                <td class="tableText">&lt;ThermalVoltage&gt;</td>
+                                <td class="tableText">[0.026]</td>
+                            </tr>
+                            <tr>
+                                <td class="tableText">Emission coefficient</td>
+                                <td class="tableText">&lt;EmissionCoeff&gt;</td>
+                                <td class="tableText">[1,2]</td>
                             </tr>
                         </table>
 
@@ -521,29 +634,38 @@
                         
                         <!-- Tube Table -->                                                    
                         <h6 style="text-align:center;bottom: -15px"><b><u>Vacuum Tube</u></b></h6>
-                        <table class="centerTable" style="width:350px">
+                        <table class="centerTable" style="min-width:400px">
+                            <tr>
+                                <td class="tableText"><b>Description</b></td>
+                                <td class="tableText"><b>Tag</b></td>
+                                <td class="tableText"><b>Element content</b></td>
+                            </tr>
                             <tr>
                                 <td class="tableText">Grid node</td>
+                                <td class="tableText">&lt;gridNode&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Anode</td>
+                                <td class="tableText">&lt;gridAnode&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Cathode</td>
+                                <td class="tableText">&lt;nodeCathode&gt;</td>
                                 <td class="tableText">[0,N<sub>Nd</sub>]</td>
                             </tr>
                             <tr>
                                 <td class="tableText">Model</td>
+                                <td class="tableText">&lt;Model&gt;</td>
                                 <td class="tableText">RDS1, RSD2, EXH</td>
                             </tr>
                         </table>
 
                         <br>
 
-                        <p><b>N<sub>Nd</sub></b> = <u>Total number of nodes in any given circuit.</u> The input value must be an integer. Node 0 denotes ground and can be used more than once.</p>
-                        <p><b>N<sub>VR</sub></b> = <u>Total number of variable resistor elements in any given circuit.</u> The input value must be an integer and greater than 0. Each value should be unique.</p>
+                        <p><b>N<sub>Nd</sub></b> = <u>Total number of nodes in the circuit.</u> The input value must be an integer. Node 0 denotes ground and can be used more than once.</p>
+                        <p><b>N<sub>VR</sub></b> = <u>Total number of variable resistor elements in the circuit.</u> The input value must be an integer and greater than 0. Each value should be unique.</p>
                         
                         <hr>
                         
@@ -627,7 +749,7 @@
                         </div>
                         <!-- end row -->
 
-                        <p>Any relative information not directly used in the Point-To-Point SDK should be elaborated on here.</p>
+                        <p>Any relative information not directly used in the Point-To-Point SDK is elaborated here.</p>
 
                         <section id="appx_vdr">
                         <h4>Voltage drop</h4>
@@ -651,19 +773,19 @@
                         
                         <section id="appx_diodes">
                             <h4>Diode</h4>
-                            <p></p>
+                            <p> [...]</p>
                             <hr>
                         </section>
                         
                         <section id="appx_vtubes">
                             <h4>Vacuum tube</h4>
-                            <p></p>
+                            <p> [...]</p>
                             <hr>
                         </section>
                         
                         <section id="appx_bjt">
                             <h4>Bipolar junction transistor (BJT)</h4>
-                            <p></p>
+                            <p> [...]</p>
                             <hr>
                         </section>
                         
