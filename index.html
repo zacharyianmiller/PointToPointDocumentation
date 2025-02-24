@@ -132,8 +132,8 @@
                                 <ul class="nav">
                                     <li><a href="#line5_1">Circuit Architecture</a></li>
                                     <li><a href="#line5_2">XML</a></li>
-                                    <li><a href="#line5_3">MATLAB</a></li>
-                                    <li><a href="#line5_4">C++</a></li>
+                                    <li><a href="#line5_3">C++</a></li>
+                                    <li><a href="#line5_4">MATLAB</a></li>
                                 </ul>
                             </li>
                             <li><a href="#line6">Resources</a></li>
@@ -669,7 +669,7 @@
                         <p><b>N<sub>VR</sub></b> = <u>Total number of variable resistor elements in the circuit.</u> The input value must be an integer and greater than 0. Each value should be unique.</p>
                         
                         <hr>
-                        
+                
                         <h4 id="line5_2">XML</h4>
                         <p>XML circuitry is the foundation for clean and efficient modeling in the Point-To-Point™ library featuring compatibility with the MATLAB prototyping library and the standard SDK’s C++ processors. Consider the most basic structure of an XML script:</p>
                         <pre>&lt;root&gt;
@@ -683,7 +683,7 @@
                         <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;PointToPointCircuit&gt;
 
-    [Our circuit will go here...]
+    [Our circuit definition will go here...]
     
 &lt;/PointToPointCircuit&gt;</pre>
                         
@@ -731,15 +731,143 @@
 </pre>
                         <p>For an XML template that supports all circuit elements, click <a href="templates/templateCircuit.xml" download="templateCircuit.xml"> here</a>.</p>
 
-                        <h4 id="line5_3">MATLAB</h4>
+                        <h4 id="line5_3">C++</h4>
+                        <p>If you would rather store your circuit models as object-oriented classes, the Point-To-Point™ library's API supports self-containment to run without dependencies on imported circuits. The API is comprised of standard audio programming function calls, taking and returning generic data types that can easily be replaced or rewritten for JUCE integration.</p>
+
+                        <p>Custom circuits are defined as a single class (often represented as one header file) with circuit parameters defined in the class constructor.</p>
+<pre>#include "Circuit.h"
+
+class RCLPF : public Circuit
+{
+public:
+    RCLPF() 
+    {
+    
+        [Our circuit definition will go here...]
+    
+    }
+    
+    ~RCLPF() {};
+};
+</pre>
+                        
+                        <p>Taking from the settings paramteres in our XML circuit template, we will also define the position of our circuit elements all in one place. It is important that all pertinent elements are assigned to the <b><i>layout</i></b> object and that elements—no matter the amount—should be assigned as an <b><i>std::vector</i></b>. Additionally, elements are referenced from the <b><i>CircuitElement</i></b> namespace to ensure modeling functionality and compatibility within our circuit processors. The name of an individual element does not matter as long as it is assigned accordingly within the vector of respective CircuitElements in our layout object.</p>
+                        <p>The <b><i>CircuitModel</i></b> class that our inherited <b><i>Circuit</i></b> class references is a hidden processor inside the SDK. Regardless, the <b><i>CircuitLayout</i></b> (instantiated as <b><i>layout</i></b>) contains the following available members—with examples—that can be assigned when constructing your custom circuit or customizing an existing one:</p>
+                        
+                        <pre><span style="color: grey">// Resistors</span>
+CircuitElement::Resistor R1 { [VALUE], [NODE1], [NODE2] };
+CircuitElement::Resistor R2 { ... };
+CircuitElement::Resistor R3 { ... };
+<span style="color: grey">// ...</span>
+
+layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { R1, R2, R3, ... };</pre>
+    
+
+<pre><span style="color: grey">// Variable Resistors</span>
+CircuitElement::VariableResistor Vr1 { [VALUE],
+                                       CircuitElement::ParamDirection::[DIRECTION],
+                                       CircuitElement::Skew::[SKEW],
+                                       [NODE1],
+                                       [NODE2],
+                                       [INITVAL] }; <span style="color: grey">// [0,1]</span>
+                                       
+CircuitElement::VariableResistor Vr2 { ... };
+<span style="color: grey">// ...</span>
+
+layout.VarRs = std::vector&lt;CircuitElement::VariableResistor&gt; { Vr1, Vr2, ... };</pre>
+
+<pre><span style="color: grey">// Potentiometers</span>
+CircuitElement::Potentiometer Pt1 { [VALUE],
+                                    CircuitElement::ParamDirection::[DIRECTION],
+                                    CircuitElement::Skew::[SKEW],
+                                    [NODE1],
+                                    [NODE2],
+                                    [NODE3],
+                                    [INITVAL] }; <span style="color: grey">// [0,1]</span>
+                                       
+CircuitElement::VariableResistor Pt2 { ... };
+<span style="color: grey">// ...</span>
+
+layout.Pots = std::vector&lt;CircuitElement::Potentiometer&gt; { Pt1, Pt2, ... };</pre>
+
+<pre><span style="color: grey">// Capacitors</span>
+CircuitElement::Capacitor C1 { [VALUE], [NODE1], [NODE2] };
+CircuitElement::Capacitor C2 { ... };
+CircuitElement::Capacitor C3 { ... };
+<span style="color: grey">// ...</span>
+
+layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { C1, C2, C3, ... };</pre>
+
+<pre><span style="color: grey">// Op-amps</span>
+CircuitElement::OPAmp OP1 { [NONINVERTING_NODE], [INVERTING_NODE], [OUTPUT_NODE] };
+CircuitElement::OPAmp OP2 { ... };
+CircuitElement::OPAmp OP3 { ... };
+<span style="color: grey">// ...</span>
+
+layout.OPAmps = std::vector&lt;CircuitElement::OPAmps&gt; { OP1, OP2, OP3, ... };</pre>
+                        
+<pre><span style="color: grey">// Diodes</span>
+CircuitElement::Diode D1 { CircuitElement::Diode::Semiconductor::[TYPE],
+                            CircuitElement::Diode::Configuration::[CONFIG] };
+CircuitElement::Diode D2 { ... };
+CircuitElement::Diode D3 { ... };
+<span style="color: grey">// ...</span>
+  
+layout.Ds = std::vector&lt;CircuitElement::Diode&gt; { D1, D2, D3, ... };</pre>
+                        
+<pre><span style="color: grey">// BJTs</span>
+CircuitElement::BJT BJT1 { CircuitElement::BJT::Doping::[TYPE],
+                            CircuitElement::BJT::Semiconductor::[TYPE],
+                            [BASE_NODE],
+                            [COLLECTOR_NODE],
+                            [EMITTER_NODE] };
+CircuitElement::Diode BJT2 { ... };
+CircuitElement::Diode BJT3 { ... };
+<span style="color: grey">// ...</span>
+  
+layout.BJTs = std::vector&lt;CircuitElement::BJT&gt; { BJT1, BJT2, BJT3, ... };</pre>
+
+<pre><span style="color: grey">// Tubes</span>
+CircuitElement::Tube12AX7 TUBE1 { CircuitElement::Tube12AX7::[TYPE], 
+                                  [GRID_NODE], 
+                                  [ANODE], 
+                                  [CATHODE] };
+CircuitElement::Tube12AX7 TUBE2 { ... };
+CircuitElement::Tube12AX7 TUBE3 { ... };
+<span style="color: grey">// ...</span>
+  
+layout.Tube12AX7s = std::vector&lt;CircuitElement::Tube12AX7&gt; { TUBE1, TUBE2, TUBE3, ... };</pre>
+
+                        <p>The inside of our RC lowpass class constructor should look as follows:</p>
+                        
+                        <pre>layout.numNodes = 2;
+
+layout.Vin = CircuitElement::VoltageInput { 1, 0 };
+layout.Vout = CircuitElement::VoltageOutput { 2, 0 };
+
+CircuitElement::Resistor R { 4700.0, 1, 2 };
+layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { R };
+
+CircuitElement::Resistor C { 47e-9, 2, 0 };
+layout.Cs = std::vector&lt;CircuitElement::Capacitor&gt; { C };
+
+layout.hasDCBlocker = false; <span style="color: grey">// if false, can be omitted</span>
+
+circuit = CircuitModel(layout);
+</pre>
+                        
+                        <br>
+                        
+                        <h4 id="line5_4">MATLAB</h4>
                         <p>The MATLAB version of the Point-To-Point™ library is a 1:1 functional recreation of the C++ library that introduces a testing script for rapid prototyping. Included in the test script is a waveform oscillator, frequency repsonse, total harmonic distortion (THD) plot, and a DC sweep analysis plot.</p>
                         
-                        <p>If you are interested in the characteristics of a circuit that has any kind of clipping, the waveform oscillator will compare a circuit's I/O when a sine wave is introduced. To find the harmonics created by a circuit, the THD plot introduces a high-frequency sine wave and converts the output to the frequency domain via the fast Fourier transform (FFT). The built-in FFT function from MATLAB labels our peaks with the appropriate harmonic numbers show only even, only odd, or a mixture of harmonics. Additionally, the noise floor of our signal can be measured in decibels (dB) by examining the noise-like black signal on the plot's bottom bound.</p>
+                        <p>Object-oriented programming (OOP) in MATLAB </p> 
+                        
+                        <p>If you are interested in the characteristics of a circuit that has any kind of clipping, the waveform oscillator will compare a sine wave input to the output of the circuit. To find the harmonics created by a circuit, the THD plot introduces a high-frequency sine wave and converts the output to the frequency domain via the fast Fourier transform (FFT). The built-in FFT function from MATLAB labels our peaks with the appropriate harmonic numbers show only even, only odd, or a mixture of harmonics. Additionally, the noise floor of our signal can be measured in decibels (dB) by examining the noise-like black signal on the plot's bottom bound.</p>
                         <p>To analyze a filter circuit, plot the frequency response of a filter system via an impulse response (IR) that has been passed through your circuit. The IR length is defaulted to size <b>N = 2<sup>13</sup> = 8192</b>. The typical Cooley-Tukey radix-2 FFT algorithm requires the transform's input to be a power of 2 (POT), but because MATLAB uses MIT's FFTW (Fastest Fourier Transform in the West), NPOT values are still processed effectively. MATLAB offers the <a href="https://www.mathworks.com/help/matlab/ref/double.nextpow2.html">nextpow2</a> function to pad your impulse response input.</p>
                         
-                        <h4 id="line5_4">C++</h4>
-                        <p> [ ... ]</p>
-                    
+                        <p>The test script can take either a MATLAB m-file circuit from the circuit template or an XML circuit. Depending on the circuit that you want to prototype, make sure the deprecated circuit is commented out.</p>
+                                            
                     </section>
                     <!-- end section -->
 
