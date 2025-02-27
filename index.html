@@ -183,7 +183,7 @@
                     </section>
                     <!-- end section -->
 
-                    <section id="line2" class="section">
+                    <section id="line2" class="">
 
                         <div class="row">
                             <div class="col-md-12 left-align">
@@ -259,7 +259,7 @@
                     </section>
                     <!-- end section -->
 
-                    <section id="line4" class="section">
+                    <section id="line4" class="">
 
                         <div class="row">
                             <div class="col-md-12 left-align">
@@ -678,7 +678,7 @@
     &lt;/child&gt;
 &lt;/root&gt;</pre>
                         
-                        <p>The XML circuits follow standard XML syntax. Because each file should support Unicode, specify as such in the script's prolog. Also, set the root (or "parent") element for the script as a "PointToPointCircuit".</p>
+                        <p>The XML circuits follow standard XML syntax. Because each file should support Unicode, specify as such in the script's prolog. Additionally, set the root (or "parent") element for the script as a "PointToPointCircuit".</p>
                         
                         <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;PointToPointCircuit&gt;
@@ -733,7 +733,7 @@
 
                         <h4 id="line5_3">C++</h4>
                         <p>If you would rather store your circuit models as object-oriented classes, the Point-To-Point™ library's API supports self-containment to run without dependencies on imported circuits. The API is comprised of standard audio programming function calls, taking and returning generic data types that can easily be replaced or rewritten for JUCE integration.</p>
-
+                    
                         <p>Custom circuits are defined as a single class (often represented as one header file) with circuit parameters defined in the class constructor.</p>
 <pre>#include "Circuit.h"
 
@@ -750,33 +750,36 @@ public:
     ~RCLPF() {};
 };
 </pre>
+
+                        <p>Taking from the settings paramteres in our XML circuit template, we will also define the position of our circuit elements all in one place. It is important that all pertinent elements are assigned to the <b><i>layout</i></b> object and that elements—no matter the amount—should be assigned as an <b><i>std::vector</i></b>. Additionally, elements are referenced from the <b><i>CircuitElement</i></b> namespace to ensure modeling functionality and compatibility within our circuit processors. The name of an individual element does not matter as long as it is assigned accordingly within the vector of respective CircuitElements in our layout object.</p>                                                
                         
-                        <p>Taking from the settings paramteres in our XML circuit template, we will also define the position of our circuit elements all in one place. It is important that all pertinent elements are assigned to the <b><i>layout</i></b> object and that elements—no matter the amount—should be assigned as an <b><i>std::vector</i></b>. Additionally, elements are referenced from the <b><i>CircuitElement</i></b> namespace to ensure modeling functionality and compatibility within our circuit processors. The name of an individual element does not matter as long as it is assigned accordingly within the vector of respective CircuitElements in our layout object.</p>
-                        <p>The <b><i>CircuitModel</i></b> class that our inherited <b><i>Circuit</i></b> class references is a hidden processor inside the SDK. Regardless, the <b><i>CircuitLayout</i></b> (instantiated as <b><i>layout</i></b>) contains the following available members—with examples—that can be assigned when constructing your custom circuit or customizing an existing one:</p>
+                        <p>The <b><i>CircuitModel</i></b> class that our inherited <b><i>Circuit</i></b> class references is a hidden processor inside the SDK. Regardless, the <b><i>CircuitLayout</i></b> (instantiated as <b><i>layout</i></b>) contains members that can be assigned when constructing your custom circuit or customizing an existing one.</p>
                         
-                        <pre><span style="color: grey">// Resistors</span>
+                        <details>
+                            <summary>Resistors</summary><pre>
 CircuitElement::Resistor R1 { [VALUE], [NODE1], [NODE2] };
 CircuitElement::Resistor R2 { ... };
 CircuitElement::Resistor R3 { ... };
 <span style="color: grey">// ...</span>
 
-layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { R1, R2, R3, ... };</pre>
-    
-
-<pre><span style="color: grey">// Variable Resistors</span>
+layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { R1, R2, R3, ... };</pre>    
+                        <hr></details>
+                        
+                        <details>
+                            <summary>Variable Resistors</summary><pre>
 CircuitElement::VariableResistor Vr1 { [VALUE],
                                        CircuitElement::ParamDirection::[DIRECTION],
                                        CircuitElement::Skew::[SKEW],
                                        [NODE1],
                                        [NODE2],
-                                       [INITVAL] }; <span style="color: grey">// [0,1]</span>
-                                       
+                                       [INITVAL] }; <span style="color: grey">// [0,1]</span>         
 CircuitElement::VariableResistor Vr2 { ... };
 <span style="color: grey">// ...</span>
 
 layout.VarRs = std::vector&lt;CircuitElement::VariableResistor&gt; { Vr1, Vr2, ... };</pre>
-
-<pre><span style="color: grey">// Potentiometers</span>
+                        <hr></details>
+                        
+                        <details><summary>Potentiometers</summary><pre>
 CircuitElement::Potentiometer Pt1 { [VALUE],
                                     CircuitElement::ParamDirection::[DIRECTION],
                                     CircuitElement::Skew::[SKEW],
@@ -789,24 +792,27 @@ CircuitElement::VariableResistor Pt2 { ... };
 <span style="color: grey">// ...</span>
 
 layout.Pots = std::vector&lt;CircuitElement::Potentiometer&gt; { Pt1, Pt2, ... };</pre>
+                        <hr></details>
 
-<pre><span style="color: grey">// Capacitors</span>
+                        <details><summary>Capacitors</summary><pre>
 CircuitElement::Capacitor C1 { [VALUE], [NODE1], [NODE2] };
 CircuitElement::Capacitor C2 { ... };
 CircuitElement::Capacitor C3 { ... };
 <span style="color: grey">// ...</span>
 
-layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { C1, C2, C3, ... };</pre>
+layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { C1, C2, C3, ... };<span style="color: grey">// ...</span></pre>
+                        <hr></details>
 
-<pre><span style="color: grey">// Op-amps</span>
+                        <details><summary>Op-amps</summary><pre>
 CircuitElement::OPAmp OP1 { [NONINVERTING_NODE], [INVERTING_NODE], [OUTPUT_NODE] };
 CircuitElement::OPAmp OP2 { ... };
 CircuitElement::OPAmp OP3 { ... };
 <span style="color: grey">// ...</span>
 
 layout.OPAmps = std::vector&lt;CircuitElement::OPAmps&gt; { OP1, OP2, OP3, ... };</pre>
-                        
-<pre><span style="color: grey">// Diodes</span>
+                        <hr></details>                     
+
+                        <details><summary>Diodes</summary><pre>
 CircuitElement::Diode D1 { CircuitElement::Diode::Semiconductor::[TYPE],
                             CircuitElement::Diode::Configuration::[CONFIG] };
 CircuitElement::Diode D2 { ... };
@@ -814,8 +820,9 @@ CircuitElement::Diode D3 { ... };
 <span style="color: grey">// ...</span>
   
 layout.Ds = std::vector&lt;CircuitElement::Diode&gt; { D1, D2, D3, ... };</pre>
-                        
-<pre><span style="color: grey">// BJTs</span>
+                        <hr></details>
+
+                        <details><summary>Diodes</summary><pre>
 CircuitElement::BJT BJT1 { CircuitElement::BJT::Doping::[TYPE],
                             CircuitElement::BJT::Semiconductor::[TYPE],
                             [BASE_NODE],
@@ -826,8 +833,9 @@ CircuitElement::Diode BJT3 { ... };
 <span style="color: grey">// ...</span>
   
 layout.BJTs = std::vector&lt;CircuitElement::BJT&gt; { BJT1, BJT2, BJT3, ... };</pre>
+                        <hr></details>
 
-<pre><span style="color: grey">// Tubes</span>
+                        <details><summary>Tubes</summary><pre>
 CircuitElement::Tube12AX7 TUBE1 { CircuitElement::Tube12AX7::[TYPE], 
                                   [GRID_NODE], 
                                   [ANODE], 
@@ -837,7 +845,38 @@ CircuitElement::Tube12AX7 TUBE3 { ... };
 <span style="color: grey">// ...</span>
   
 layout.Tube12AX7s = std::vector&lt;CircuitElement::Tube12AX7&gt; { TUBE1, TUBE2, TUBE3, ... };</pre>
-
+                        <hr></details>
+                        
+                        <br>
+                         
+                        <h5>Public Member Functions</h5>
+                        <p>The following functions belong to the Circuit class, meaning that these should be used in the main DSP processing of your circuit(s):</p>
+                        <pre>void <b>process</b> (const float* input, <span style="color: grey">// buffer pointer</span>
+              float* output, <span style="color: grey">// buffer pointer</span>
+              int numSamples, <span style="color: grey">// buffer length</span>
+              int channel) <span style="color: grey">// [0,1]</span></pre>
+                        <p>Block processor that takes and returns a pointer to separate respective buffers.</p>
+                        
+                        <pre>float <b>processInPlace</b> (float* buffer, <span style="color: grey">// buffer pointer</span>
+                     int numSamples, <span style="color: grey">// buffer length</span>
+                     int channel) <span style="color: grey">// [0,1]</span></pre>
+                        <p>Block processor that takes and returns a pointer to the same buffer.</p>
+                        
+                        <pre>float <b>processSample</b> (float x, <span style="color: grey">// sample by value</span>
+                     int channel) <span style="color: grey">// [0,1]</span></pre>
+                        <p>Per-sample processor that is not dependent on a fixed buffer. This is often implemented in a custom block processor similar to <b><i>process</i></b> or <b><i>processInPlace</i></b>. Note that all the above processor functions support two-channel non-interleaved processing.</p>
+                        
+                        <pre>void <b>prepare</b> (double sampleRate, <span style="color: grey">// circuit sampling rate</span>
+              int bufferSize) <span style="color: grey">// samples per buffer</span></pre>
+                        <p>Processor initializer that should be called before processing occurs. The JUCE framework utilizes the <a href="https://docs.juce.com/master/classAudioProcessor.html#a44b74778247a35a669a3a994d814389e">AudioProcessor</a>'s <b><i>prepareToPlay</i></b> function that is called per internal calls.</p>
+                        
+                        <pre>std::vector&lt;double&gt; <b>setParameters</b> (std::vector&lt;double&gt; parameters)<span style="color: grey"> // parameter array</span></pre>
+                        <p>General connection between your main processor's parameter states and the circuit's internal parameter states. As an alternative for larger systems, the JUCE framework supports the retrieval of <b><i>raw parameter values</i></b> (as atomic float pointers) insider the constructor of your circuit.</p>
+                        
+                        <pre>void <b>setSamples4Smooth</b> (int samples4Smooth)<span style="color: grey"> // smoothing ramp size</span></pre>
+                        <p>Sets smoothing time for all parameterized elements in a circuit. If you are wanting a specific millisecond ramp, consider replacing samples4Smooth with a basic conversion:</p>
+                        <pre>int samples4Smooth = targetMilliseconds / 1000 * sampleRate;</pre>
+                                         
                         <p>The inside of our RC lowpass class constructor should look as follows:</p>
                         
                         <pre>layout.numNodes = 2;
@@ -855,9 +894,6 @@ layout.hasDCBlocker = false; <span style="color: grey">// if false, can be omitt
 
 circuit = CircuitModel(layout);
 </pre>
-                        
-                        <br>
-                        
                         <h4 id="line5_4">MATLAB</h4>
                         <p>The MATLAB version of the Point-To-Point™ library is a 1:1 functional recreation of the C++ library that introduces a testing script for rapid prototyping. Included in the test script is a waveform oscillator, frequency repsonse, total harmonic distortion (THD) plot, and a DC sweep analysis plot.</p>
                         
