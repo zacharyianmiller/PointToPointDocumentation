@@ -394,6 +394,14 @@ table, th, td {
     padding: 5px;
 }
 
+input:focus {
+outline: none;
+}
+
+details > summary:first-of-type {
+   display: list-item;
+}
+
 /* ----------------------------------------------------------------- */
 
 /* Tooltip container */
