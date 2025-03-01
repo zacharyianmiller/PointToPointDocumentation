@@ -696,13 +696,13 @@
     <pre>&lt;Name&gt;RCLPF&lt;/Name&gt;
 &lt;Category&gt;BasicFilters&lt;/Category&gt;
 &lt;Settings&gt;  
-    &lt;numNodes&gt;3&lt;/numNodes&gt;
+    &lt;numNodes&gt;2&lt;/numNodes&gt;
     &lt;hasDCBlocker&gt;false&lt;/hasDCBlocker&gt;
 &lt;/Settings&gt;
 </pre>
 
                         <p>Similar to our settings definition, our circuit elements are defined under specific element-specific tags. Elements can be added in no particular order with no limit. If one or more of an element is present in a circuit, each instance in the script should be enclosed by a parent tag (e.g., Rs, VarRs, Pots, Cs, Ds, OPAmps, BJTs, Tube12AX7s or Vs for voltage sources) and each individual  element should enclose its parameters with a child tag (e.g., Resistor, VariableResistor, Potentiometer, Capacitor, Diode, OPAmp, Tube or VoltageSource). Variable resistors and potentiometers support a label class to organize your knobs. Voltage inputs and outputs only should exist once for a given circuit model, so a parent tag is not required.</p>
-                        <p>When a component is wired to ground, you should always use <b>Node #2</b> for the zero value.</p>
+                        <p>When a component is wired to ground, you should always use <b>Node #2</b> for the zero value. Ground is not considered in the total nodes for a circuit.</p>
                         
                             <pre>&lt;Elements&gt; 
     &lt;VoltageInput&gt; 
@@ -758,29 +758,29 @@ public:
                         <details>
                             <summary>Resistors</summary><pre>
 CircuitElement::Resistor R1 { [VALUE], [NODE1], [NODE2] };
-CircuitElement::Resistor R2 { ... };
-CircuitElement::Resistor R3 { ... };
+CircuitElement::Resistor R2 { <span style="color: grey">/* ... */</span> };
+CircuitElement::Resistor R3 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
 
-layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { R1, R2, R3, ... };</pre>    
+layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { R1, R2, R3, <span style="color: grey">/* ... */</span> };</pre>    
                         <hr></details>
                         
                         <details>
                             <summary>Variable Resistors</summary><pre>
-CircuitElement::VariableResistor Vr1 { [VALUE],
+CircuitElement::VariableResistor Vr1 { [VALUE], [ID],
                                        CircuitElement::ParamDirection::[DIRECTION],
                                        CircuitElement::Skew::[SKEW],
                                        [NODE1],
                                        [NODE2],
                                        [INITVAL] }; <span style="color: grey">// [0,1]</span>         
-CircuitElement::VariableResistor Vr2 { ... };
+CircuitElement::VariableResistor Vr2 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
 
-layout.VarRs = std::vector&lt;CircuitElement::VariableResistor&gt; { Vr1, Vr2, ... };</pre>
+layout.VarRs = std::vector&lt;CircuitElement::VariableResistor&gt; { Vr1, Vr2, <span style="color: grey">/* ... */</span> };</pre>
                         <hr></details>
                         
                         <details><summary>Potentiometers</summary><pre>
-CircuitElement::Potentiometer Pt1 { [VALUE],
+CircuitElement::Potentiometer Pt1 { [VALUE], [ID],
                                     CircuitElement::ParamDirection::[DIRECTION],
                                     CircuitElement::Skew::[SKEW],
                                     [NODE1],
@@ -788,51 +788,51 @@ CircuitElement::Potentiometer Pt1 { [VALUE],
                                     [NODE3],
                                     [INITVAL] }; <span style="color: grey">// [0,1]</span>
                                        
-CircuitElement::VariableResistor Pt2 { ... };
+CircuitElement::VariableResistor Pt2 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
 
-layout.Pots = std::vector&lt;CircuitElement::Potentiometer&gt; { Pt1, Pt2, ... };</pre>
+layout.Pots = std::vector&lt;CircuitElement::Potentiometer&gt; { Pt1, Pt2, <span style="color: grey">/* ... */</span> };</pre>
                         <hr></details>
 
                         <details><summary>Capacitors</summary><pre>
 CircuitElement::Capacitor C1 { [VALUE], [NODE1], [NODE2] };
-CircuitElement::Capacitor C2 { ... };
-CircuitElement::Capacitor C3 { ... };
+CircuitElement::Capacitor C2 { <span style="color: grey">/* ... */</span> };
+CircuitElement::Capacitor C3 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
 
-layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { C1, C2, C3, ... };<span style="color: grey">// ...</span></pre>
+layout.Rs = std::vector&lt;CircuitElement::Resistor&gt; { C1, C2, C3, <span style="color: grey">/* ... */</span> };<span style="color: grey"> // ...</span></pre>
                         <hr></details>
 
                         <details><summary>Op-amps</summary><pre>
 CircuitElement::OPAmp OP1 { [NONINVERTING_NODE], [INVERTING_NODE], [OUTPUT_NODE] };
-CircuitElement::OPAmp OP2 { ... };
-CircuitElement::OPAmp OP3 { ... };
+CircuitElement::OPAmp OP2 { <span style="color: grey">/* ... */</span> };
+CircuitElement::OPAmp OP3 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
 
-layout.OPAmps = std::vector&lt;CircuitElement::OPAmps&gt; { OP1, OP2, OP3, ... };</pre>
+layout.OPAmps = std::vector&lt;CircuitElement::OPAmps&gt; { OP1, OP2, OP3, <span style="color: grey">/* ... */</span> };</pre>
                         <hr></details>                     
 
                         <details><summary>Diodes</summary><pre>
 CircuitElement::Diode D1 { CircuitElement::Diode::Semiconductor::[TYPE],
                             CircuitElement::Diode::Configuration::[CONFIG] };
-CircuitElement::Diode D2 { ... };
-CircuitElement::Diode D3 { ... };
+CircuitElement::Diode D2 { <span style="color: grey">/* ... */</span> };
+CircuitElement::Diode D3 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
   
-layout.Ds = std::vector&lt;CircuitElement::Diode&gt; { D1, D2, D3, ... };</pre>
+layout.Ds = std::vector&lt;CircuitElement::Diode&gt; { D1, D2, D3, <span style="color: grey">/* ... */</span> };</pre>
                         <hr></details>
 
-                        <details><summary>Diodes</summary><pre>
+                        <details><summary>BJTs</summary><pre>
 CircuitElement::BJT BJT1 { CircuitElement::BJT::Doping::[TYPE],
                             CircuitElement::BJT::Semiconductor::[TYPE],
                             [BASE_NODE],
                             [COLLECTOR_NODE],
                             [EMITTER_NODE] };
-CircuitElement::Diode BJT2 { ... };
-CircuitElement::Diode BJT3 { ... };
+CircuitElement::Diode BJT2 { <span style="color: grey">/* ... */</span> };
+CircuitElement::Diode BJT3 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
   
-layout.BJTs = std::vector&lt;CircuitElement::BJT&gt; { BJT1, BJT2, BJT3, ... };</pre>
+layout.BJTs = std::vector&lt;CircuitElement::BJT&gt; { BJT1, BJT2, BJT3, <span style="color: grey">/* ... */</span> };</pre>
                         <hr></details>
 
                         <details><summary>Tubes</summary><pre>
@@ -840,11 +840,11 @@ CircuitElement::Tube12AX7 TUBE1 { CircuitElement::Tube12AX7::[TYPE],
                                   [GRID_NODE], 
                                   [ANODE], 
                                   [CATHODE] };
-CircuitElement::Tube12AX7 TUBE2 { ... };
-CircuitElement::Tube12AX7 TUBE3 { ... };
+CircuitElement::Tube12AX7 TUBE2 { <span style="color: grey">/* ... */</span> };
+CircuitElement::Tube12AX7 TUBE3 { <span style="color: grey">/* ... */</span> };
 <span style="color: grey">// ...</span>
   
-layout.Tube12AX7s = std::vector&lt;CircuitElement::Tube12AX7&gt; { TUBE1, TUBE2, TUBE3, ... };</pre>
+layout.Tube12AX7s = std::vector&lt;CircuitElement::Tube12AX7&gt; { TUBE1, TUBE2, TUBE3, <span style="color: grey">/* ... */</span> };</pre>
                         <hr></details>
                         
                         <br>
@@ -897,13 +897,133 @@ circuit = CircuitModel(layout);
                         <h4 id="line5_4">MATLAB</h4>
                         <p>The MATLAB version of the Point-To-Point™ library is a 1:1 functional recreation of the C++ library that introduces a testing script for rapid prototyping. Included in the test script is a waveform oscillator, frequency repsonse, total harmonic distortion (THD) plot, and a DC sweep analysis plot.</p>
                         
-                        <p>Object-oriented programming (OOP) in MATLAB </p> 
+                        <h5>Custom Circuits</h5>
+                        <p>Object-oriented programming (OOP) in MATLAB allows for you to copy over your C++ classes. Similar to our C++ format, any custom circuit made with the Point-To-Point™ library will inherit a <b><i>Circuit</i></b> class which itself inherits from the abstract <b><i>CircuitProcessor</i></b> class that contains all necessary virtual processing functions for your circuit. The general structure for a circuit only contains a class constructor that references the <b><i>layout</i></b> and <b><i>circuit</i></b> members. The <b><i>layout</i></b> property of the inheritied <b><i>Circuit</i></b> class allows for elements, relevant voltage sources, nodes totals, output gain parameters, and the DC blocker flag to be initialized. Note that the C++ supports these members as part of the <b><i>CircuitLayout</i></b> struct while the MATLAB version layout variables are accessed as normal members. The <b><i>CircuitLayout</i></b> constructor handles the assignment of element arrays (as well as voltage sources and output gain parameters) to be passed on to processing. The DC blocker flag is defaulted to <b><u>false</u></b> and only needs to be explicitly initialized if it is necessary.</p>
                         
+                        <pre><span style="color: blue">classdef</span> RCLPF &lt; Circuit
+    <span style="color: blue">methods</span>
+        <span style="color: blue">function</span> [o] = RCLPF
+            o.layout.numNodes = 2;
+            o.layout.Vin = VoltageInput (1, 0)
+            o.layout.Vin = VoltageOutput (2, 0)
+            
+            R1 = Resistor (1e3, 1, 2);
+            o.layout.Rs = R1;
+            
+            C1 = Capacitor (10e-6, 2, 0);
+            o.layout.Cs = C1;
+            
+            o.circuit = CircuitModel(o.layout);
+        <span style="color: blue">end</span>
+    <span style="color: blue">end</span>
+<span style="color: blue">end</span></pre>
+                        
+                        <p>Similarly to how the C++ elements are used in your circuit constructors, the following are examples of each circuit element type and how they would be implemented in a custom circuit like the one above:</p>
+                        
+                        <details>
+                            <summary>Resistors</summary><pre>
+R1 = Resistor (<i style="color: gray">VALUE</i>, <i style="color: gray">NODE1</i>, <i style="color: gray">NODE2</i>);
+R2 = Resistor ( <span style="color: grey">...</span> );
+R3 = Resistor ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.Rs = [R1; R2; R3; <span style="color: grey">...</span> ];</pre>    
+                        <hr></details>
+                        
+                        <details>
+                            <summary>Variable Resistors</summary><pre>
+Vr1 = VariableResistor (<i style="color: gray">VALUE</i>, <i style="color: gray">ID</i> ..., 
+                        VariableResistorDirection.<i style="color: gray">DIRECTION</i> ..., 
+                        VariableResistorSkew.<i style="color: gray">SKEW</i> ...,
+                        <i style="color: gray">NODE1</i>, <i style="color: gray">NODE2</i>, '<i style="color: gray">LABEL</i>', 
+                        <i style="color: gray">INITVAL</i>); <span style="color: gray">% [0,1]</span>
+Vr2 = VariableResistor ( <span style="color: grey">...</span> );
+Vr3 = VariableResistor ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.VarRs = [Vr1; Vr2; Vr3; <span style="color: grey">...</span> ];</pre>    
+                        <hr></details>
+                        
+                        <details>
+                            <summary>Potentiometers</summary><pre>
+Pt1 = Potentiometer (<i style="color: gray">VALUE</i>, <i style="color: gray">ID</i> ..., 
+                    VariableResistorDirection.<i style="color: gray">DIRECTION</i> ..., 
+                    VariableResistorSkew.<i style="color: gray">SKEW</i> ...,
+                    <i style="color: gray">NODE1</i>, <i style="color: gray">NODE2</i>, <i style="color: gray">NODE3</i>, '<i style="color: gray">LABEL</i>', 
+                    <i style="color: gray">INITVAL</i>); <span style="color: gray">% [0,1]</span>
+Pt2 = Potentiometer ( <span style="color: grey">...</span> );
+Pt3 = Potentiometer ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.Pots = [Pt1; Pt2; Pt3; <span style="color: grey">...</span> ];</pre>    
+<p><b><u>Note:</u></b> The <b><i>Potentiometer</i></b> element utilizes the same enumerations as the <b><i>Variable Resistor</i></b> element class.</p>
+                        <hr></details>
+
+
+                        <details>
+                            <summary>Capacitors</summary><pre>
+C1 = Resistor (<i style="color: gray">VALUE</i>, <i style="color: gray">NODE1</i>, <i style="color: gray">NODE2</i>);
+C2 = Resistor ( <span style="color: grey">...</span> );
+C3 = Resistor ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.Cs = [C1; C2; C3; <span style="color: grey">...</span> ];</pre>    
+                        <hr></details>
+
+                        <details>
+                            <summary>Op-amps</summary><pre>
+OP1 = OPAmp (<i style="color: gray">NONINVERTING_NODE</i>, <i style="color: gray">INVERTING_NODE</i>, <i style="color: gray">OUTPUT_NODE</i>);
+OP2 = OPAmp ( <span style="color: grey">...</span> );
+OP3 = OPAmp ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.OPAmps = [OP1; OP2; OP3; <span style="color: grey">...</span> ];</pre>    
+                        <hr></details>
+
+                        <details>
+                            <summary>Diodes</summary><pre>
+D1 = Diode (Semiconductor.<i style="color: gray">TYPE</i> ..., 
+            Configuration.<i style="color: gray">TYPE</i> ...,
+            <i style="color: gray">NODE1</i>, <i style="color: gray">NODE2</i>);
+D2 = Diode ( <span style="color: grey">...</span> );
+D3 = Diode ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.Ds = [D1; D2; D3; <span style="color: grey">...</span> ];</pre>    
+                        <hr></details>
+
+                        <details>
+                            <summary>BJTs</summary><pre>
+BJT1 = BJT (Doping.<i style="color: gray">TYPE</i> ..., 
+            Semiconductor.<i style="color: gray">TYPE</i> ...,
+            <i style="color: gray">BASE_NODE</i>, <i style="color: gray">COLLECTOR_NODE</i>, <i style="color: gray">EMITTER_NODE</i>);
+BJT2 = BJT ( <span style="color: grey">...</span> );
+BJT3 = BJT ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.BJTs = [BJT1; BJT2; BJT3; <span style="color: grey">...</span> ];</pre>    
+                        <hr></details>
+
+                        <details>
+                            <summary>Tubes</summary><pre>
+TUBE1 = Tube12AX7 (Model12AX7.<i style="color: gray">TYPE</i>, <i style="color: gray">GRID_NODE</i>, <i style="color: gray">ANODE</i>, <i style="color: gray">CATHODE</i>);
+TUBE2 = Tube12AX7 ( <span style="color: grey">...</span> );
+TUBE3 = Tube12AX7 ( <span style="color: grey">...</span> );
+<span style="color: grey">% ...</span>
+
+o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span> ];</pre>    
+                        <hr></details>
+                        
+                        <br>
+                                
+                        <h5>Circuit Testing</h5>
                         <p>If you are interested in the characteristics of a circuit that has any kind of clipping, the waveform oscillator will compare a sine wave input to the output of the circuit. To find the harmonics created by a circuit, the THD plot introduces a high-frequency sine wave and converts the output to the frequency domain via the fast Fourier transform (FFT). The built-in FFT function from MATLAB labels our peaks with the appropriate harmonic numbers show only even, only odd, or a mixture of harmonics. Additionally, the noise floor of our signal can be measured in decibels (dB) by examining the noise-like black signal on the plot's bottom bound.</p>
                         <p>To analyze a filter circuit, plot the frequency response of a filter system via an impulse response (IR) that has been passed through your circuit. The IR length is defaulted to size <b>N = 2<sup>13</sup> = 8192</b>. The typical Cooley-Tukey radix-2 FFT algorithm requires the transform's input to be a power of 2 (POT), but because MATLAB uses MIT's FFTW (Fastest Fourier Transform in the West), NPOT values are still processed effectively. MATLAB offers the <a href="https://www.mathworks.com/help/matlab/ref/double.nextpow2.html">nextpow2</a> function to pad your impulse response input.</p>
                         
-                        <p>The test script can take either a MATLAB m-file circuit from the circuit template or an XML circuit. Depending on the circuit that you want to prototype, make sure the deprecated circuit is commented out.</p>
-                                            
+                        <p>The test script can take either a MATLAB m-file circuit from the circuit template or an XML circuit. Depending on the circuit that you want to prototype, make sure the deprecated circuit is commented out. Additionally, you can port your circuit from its MATLAB class form to XML from the testing script via the <b><i>saveXMLCircuit</i></b> function.</p>
+                                
+                        <p>Note that, to access your circuit's capacity in the testing script, the <b><i>PointToPointIncludes</i></b> and <b><i>PointToPointRemoves</i></b> should be readable in your MATLAB <b><u>Current Folder</u></b> path.</p>
+
                     </section>
                     <!-- end section -->
 
