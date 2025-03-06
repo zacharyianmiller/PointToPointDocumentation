@@ -194,7 +194,7 @@
                         </div>
                         <!-- end row -->
                         
-                        <p>The Point-To-Point™ SDK is a static C++ library with a complimentary MATLAB prototyping wrapper developed to make digital circuit modeling more accessible to the audio software developer community. This library combines the strengths of nodal and modified nodal analysis, state-space, and Discrete-Kirchoff (DK) methods to form a homogenized approach to accurate, real-time analog circuit modeling. Rather than generalizing a circuit’s characteristics, models are done at the component-level to allow for maximum customization options.</p>
+                        <p>The Point-To-Point™ SDK is a static C++ library with a complimentary MATLAB prototyping wrapper developed to make digital circuit modeling more accessible to the audio software developer community. This library combines the strengths of nodal and modified nodal analysis, state-space, and Discrete-Kirchhoff (DK) methods to form a homogenized approach to accurate, real-time analog circuit modeling. Rather than generalizing a circuit’s characteristics, models are done at the component-level to allow for maximum customization options.</p>
                         <p>Typical restrictions within discrete models are the computationally expensive iterative solvers (e.g., Newton-Raphson method) often found in non-linear component models. To optimize these methods, novel techniques are used to achieve a generalized stability throughout circuit chains—especially those that use multiple non-linear component models. While local computer efficiency, however, is at the forefront of general software’s value, we oppose CPU-saving approximations as to maintain the integrity of the circuit model. As consumer electronics become more efficient, the ability to stay true to circuit architecture becomes more achievable.</p>
                         <p>We encourage all new users to visit <a href="https://hackaudio.com/">www.hackaudio.com</a> where you have access to our products and can keep up with any updates or additions to our software.</p>
                         
@@ -239,7 +239,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>Standard resistors (or “fixed resistors”) have a static resistance value where variable resistors have a terminal resistance, giving the functionality to parameterize gain for volume controls or be used as a general voltage regulator. Three-terminal variable resistors are also called <b><u>potentiometers</u></b> and should be used accordingly in your circuit models (see <a href="#appx_vdi">voltage divider</a>). Fixed resistors found in typical audio schematics are almost always linear—meaning it has an explicit <a href="#appx_vdr"><div class="tooltip">voltage drop<span class="tooltiptext">Defined by Ohm’s Law and used to support Kirchoff’s Voltage Law (KVL), the voltage drop is the total voltage lost over one analog component or the entire circuit due to conductor resistance. Conductor resistance is merely how much a conductive medium/material opposes the flow of electric current.</span></div></a> across the element—and introduces resistance (or the restriction of electrical flow) between two nodes of a circuit. Resistors are measured in Ohms (Ω).</div>
+                                <div>Standard resistors (or “fixed resistors”) have a static resistance value where variable resistors have a terminal resistance, giving the functionality to parameterize gain for volume controls or be used as a general voltage regulator. Three-terminal variable resistors are also called <b><u>potentiometers</u></b> and should be used accordingly in your circuit models (see <a href="#appx_vdi">voltage divider</a>). Fixed resistors found in typical audio schematics are almost always linear—meaning it has an explicit <a href="#appx_vdr"><div class="tooltip">voltage drop<span class="tooltiptext">Defined by Ohm’s Law and used to support Kirchhoff’s Voltage Law (KVL), the voltage drop is the total voltage lost over one analog component or the entire circuit due to conductor resistance. Conductor resistance is merely how much a conductive medium/material opposes the flow of electric current.</span></div></a> across the element—and introduces resistance (or the restriction of electrical flow) between two nodes of a circuit. Resistors are measured in Ohms (Ω).</div>
                                 
                                 <br>
                                 
@@ -1062,7 +1062,7 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
 
                         <section id="appx_vdr">
                         <h4>Voltage drop</h4>
-                        <p>Defined by Ohm’s Law and used to support Kirchoff’s Voltage Law (KVL), the voltage drop is the total voltage lost over one analog component or the entire circuit due to conductor resistance. Conductor resistance is merely how much a conductive medium/material opposes the flow of electric current.</p>
+                        <p>Defined by Ohm’s Law and used to support Kirchhoff’s Voltage Law (KVL), the voltage drop is the total voltage lost over one analog component or the entire circuit due to conductor resistance. Conductor resistance is merely how much a conductive medium/material opposes the flow of electric current.</p>
                         <hr>
                         </section>
                         
@@ -1155,7 +1155,7 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         <p> [...]</p>
                         <hr>
                         
-                        <h4>Discrete-Kirchoff (DK) method</h4>
+                        <h4>Discrete-Kirchhoff (DK) method</h4>
                         <p> [...]</p>
                         <hr>
                         
@@ -1172,9 +1172,26 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         <p>where <b><i>V</i></b> is voltage, <b><i>i</i></b> is current and <b><i>R</i></b> is resistance. If Ohm's Law is true, fixed resistance causes voltage and current to be proportional and fixed voltage causes current to be inversely proportional to its resistance. This law also can be rearranged to define resistance as <b><i>R = V / i</i></b>.</p>
                         <hr>
                         
-                        <h4>Kirchoff's Voltage Law (KVL)</h4>
-                        <p>Kirchoff's Voltage Law states that the sum of the voltages across components in a closed circuit is equal to <b><i>zero</i></b>. This can also be called the <b><i>loop law</i></b> or <b><i>Kirchoff's second law</i></b>.</p>
-                        <!--TODO: ADD CIRCUIT AND ALGEBRAIC PROOF! -->
+                        <h4>Kirchhoff's Voltage Law (KVL)</h4>
+                        <p>Kirchhoff's Voltage Law states that the sum of the voltages across components in a closed circuit is equal to <b><i>zero</i></b>. This can also be called the <b><i>loop law</i></b> or <b><i>Kirchhoff's second law</i></b>.</p>
+                        
+                        <h5>Example: Series Resistors</h5>
+                        <img src="images/KVL.svg" class="center" style="border: 3px solid black" width="350px">
+                        <br>
+                        <p>A basic circuit like the series resistor schematic above can easily display the law in action. A battery is supplying <b>9V</b> (DC) and we will use a current of <b><i>i</i> = 0.6A</b>. To determine if the voltage drops across each resistor will nullify our input voltage value, we use Ohm's Law over each component.</p>
+                        <div style="text-align-last: center;">
+                            <ul>
+                                <li>R1 → V = 0.6 <b>&sdot;</b> 5 = <b>3V</b></li>
+                                <li>R2 → V = 0.6 <b>&sdot;</b> 10 = <b>6V</b></li>
+                            </ul>
+                        </div>
+                        <p>When the current over a component goes from positive to negative, this will be deemed a voltage drop with the polarity represented as negative.</p>
+                        <div style="text-align-last: center;">
+                            <ul>
+                                <li>ΣV → 9V (battery) - 3V - 6V = <b>0V</b></li>
+                            </ul>
+                        </div>
+                        <p>While there are edge cases where KVL is not applicable, the general audio circuit will most likely always satisfy this principle.</p>
                         <hr>
                         
                         <h4>Fliege filter</h4>
@@ -1224,6 +1241,7 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                             <li>[11] <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html">https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html</a></li>
                             <li>[12] <a href="https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf">https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf</a></li>
                             <li>[13] <a href="https://lehman.edu/faculty/anchordoqui/lab2.pdf">https://lehman.edu/faculty/anchordoqui/lab2.pdf</a></li>
+                            <li>[14] <a href="https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html">https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html</a></li>
                         </ul> 
                         <!-- end list -->
                         
