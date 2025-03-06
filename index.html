@@ -138,6 +138,7 @@
                             </li>
                             <li><a href="#line6">Resources</a></li>
                             <li><a href="#line7">Appendix</a></li>
+                            <li><a href="#line8">References</a></li>
                         </ul>
                     </nav >
                 </div>
@@ -1067,7 +1068,7 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         
                         <section id="appx_rsd">
                             <h4>RSD</h4>
-                            <p>RSD was the rebranded name of the east-German tube manufacturer—Rundfunk- und Fernmelde-Technik (RFT)—who sold and relabeled to other well-known German manufacturers for resale such as Telefunken and Siemens.</p>
+                            <p>RSD was the rebranded name of the east-German tube manufacturer—Rundfunk-und Fernmelde-Technik (RFT)—who sold and relabeled to other well-known German manufacturers for resale such as Telefunken and Siemens.</p>
                             <p> Rundfunk- und Fernmelde-Technik translates to “broadcasting and telecommunications technology.”</p>
                             <hr>
                         </section>
@@ -1081,13 +1082,58 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         
                         <section id="appx_diodes">
                             <h4>Diode</h4>
-                            <p> [...]</p>
+                            <img src="images/diode.svg" alt="diode" class="center" style="border: 3px solid black" width="350">
+                            <div style="text-align-last: center;"><p><i>Schematic symbol of a diode.</i></p></div>
+                            
+                            <p>An electrical component with two polarized terminals (e.g, anode and cathode). </p>
+                            <p>The ideal diode is meant to control the direction of current flow. When the voltage over a diode is negative, the component acts as an open circuit and passes no current. Inversely, when the input voltage is positive, the component acts as a short circuit and should pass 0V. We know, however, that these are ideals and that the average diode implemented in an audio schematic is more complex as a nonlinear element. The semiconductor diode—the most common diode type—requires a certain amount of voltage to pass current. Consider the current voltage relationship of two common semiconductor diode types:</p>
+                            
+                            <img src="images/diodeIV.png" class="center" style="border: 3px solid black" width="350px">
+                            <div style="text-align-last: center;"><p><i>Typical I-V characteristic of silicon and germanium diodes. See more <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html">here</a>.</i></p></div>
+                            
+                            <p>Note that the forward bias quadrant signifies when the diode is "on" and the reverse bias when it is "off". Even though in the reverse bias quadrant the diode ideally passes no signal, it passes a negligible amount (nA, nanoamperes) called reverse saturation current. The saturation current of each diode is dependent on its semiconductor type. There is also a case that a diode is overloaded into a "breakdown" stage where negative signal passes inversely over the diode from cathode to anode.</p>
+                            
+                            <p>The rectifier diode, a derivative of general semiconductor diodes, are often found in schematics under power supply subcircuits as they aid in coverting alternating current (AC) in to direct current for use in devices that run on fixed DC (e.g., guitar pedals). Outside of its aesthetic use, a specialty type of diode called a light-emitting diode (LED) is also found in audio applications—most specifically the optical compressor. When the threshold of the compressor is decreased, more signal is introduced into the unit causing the LED to light up. A coupled photoresistor (a light-sensitive resistor component) reacts by increasing its resistance and attenuating the output signal.</p>
                             <hr>
                         </section>
                         
                         <section id="appx_vtubes">
                             <h4>Vacuum tube</h4>
-                            <p> [...]</p>
+                            
+                            <p>Otherwise known as a thermionic valve, the vacuum tube—by definition—is a 
+                                component containing "two or more electrodes suspended in a glass bulb." [12] 
+                                The inside of the bulb has all air stripped from it, leaving only a vacuum. 
+                                Due to its coating during manufacturing, the cathode (or negatively charged electrode) 
+                                emits electrons extremely well when heated to its working temperature of nearly 
+                                <b>777&deg;C</b> or <b>1430.6&deg;F.</b> While not a functioning electrode, the tungsten 
+                                wire heater supply inside the tube consequently heats the cathode when itself is also 
+                                brought to high temperatures. Note that the heater and the cathode are not connected. 
+                                When at the working temperature, the cathode produces a cloud of electrons known as a 
+                                <b>space charge</b> which are recieved (via impact at extremely high speeds) by our 
+                                positively charged <b>anode</b>. Without a recieving electrode, the clouded electrons 
+                                from our cathode would become so dense that electron production would essentially be 
+                                halted as potential electrons would be repelled from the cathode. This kind of one-way 
+                                tranferral of energy—negative charge from cathode (-) to anode (+)—is generally known 
+                                as a diode or, in this case, a vacuum diode. It's important to note that, in the literature, 
+                                it is easier to conceptualize or communicate positive computations, so you will often see the 
+                                current going over the vacuum diode as the current from anode to cathode (Ia)—which is 
+                                positive—rather than the negative current from cathode to anode.
+                            </p>
+                            
+                            <p>The third node, characteristic of dual-triode vacuum tubes seen in audio circuits, is the 
+                                <b>control grid</b>, a "spiral of fine molybdenum wire" [12] that finds itself coiled 
+                                relatively closer to the cathode than the anode. When a positive charge is applied to the 
+                                grid, its fine mesh composition isn't capable of drawing in the electrons leading them to 
+                                fly through to the anode. However, if a negative charge is applied to the control grid, 
+                                the anode is <b>cut off</b> or choked. Similar changes in grid voltage and anode voltage 
+                                heavily favor the grid due to its relative position to the cathode. The voltage required 
+                                to cut off the valve is referred to as the <b>grid base</b>.
+                            </p>
+                            
+                            <img src="images/12AX7_IVChar.jpg" class="center" style="border: 3px solid black" width="550px">
+                            <div style="text-align-last: center;"><p><i class="center">Static anode characteristic plot of the ECC83/12AX7 dual-triode vacuum tube. See more <a href="https://www.onlypedals.com/solid-state-12ax7-tube-compared-with-traditional-12ax7-vacuum-tube">here</a>.</i></p></div>
+                            
+                            <p>Keeping in mind the single curve shown on a diode's I-V characteristic (or static anode characteristic), the triode's I-V plot contains a group of curves that show the nonlinear effects of voltage on the current dependent on different levels of inflicted negative voltage in the grid.</p>
                             <hr>
                         </section>
                         
@@ -1115,16 +1161,20 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         
                         <section id="appx_vdi" class="">
                             <h4>Voltage divider</h4>
-                            <p> [...]</p>
+                            <p>Voltage division, the result of a physical voltage divider, is the act of arranging passive linear components in a way that the output voltage (V<sub>out</sub>) is a fraction of its relative input voltage (V<sub>in</sub>). A general voltage divider example is a naive circuit where an output node is placed between series resistors. This is also known as the implementation of a resistive divider.</p>
+                            <p>While variable voltage dividers as potentiometers are most common in audio circuits, capacitors are also capable of creating voltage dividers. The RC lowpass filter used as a Point-To-Point™ circuit model is a voltage divider splitting a resistor and a capacitor tied to ground.</p>
                             <hr>
                         </section>
                         
                         <h4>Ohm's Law</h4>
-                        <p> [...]</p>
+                        <p>Ohm's Law states that there is a linear relationship between the voltage drop over a component and the current going through it. This can be defined simply by</p>
+                        <div style="text-align-last: center;"><p><b><i>V = iR</i></b></p></div>
+                        <p>where <b><i>V</i></b> is voltage, <b><i>i</i></b> is current and <b><i>R</i></b> is resistance. If Ohm's Law is true, fixed resistance causes voltage and current to be proportional and fixed voltage causes current to be inversely proportional to its resistance. This law also can be rearranged to define resistance as <b><i>R = V / i</i></b>.</p>
                         <hr>
                         
                         <h4>Kirchoff's Voltage Law (KVL)</h4>
-                        <p> [...]</p>
+                        <p>Kirchoff's Voltage Law states that the sum of the voltages across components in a closed circuit is equal to <b><i>zero</i></b>. This can also be called the <b><i>loop law</i></b> or <b><i>Kirchoff's second law</i></b>.</p>
+                        <!--TODO: ADD CIRCUIT AND ALGEBRAIC PROOF! -->
                         <hr>
                         
                         <h4>Fliege filter</h4>
@@ -1146,6 +1196,36 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         <h4>Biquad filter</h4>
                         <p> [...]</p>
                         <hr>
+                        
+                    </section>
+                    <!-- end section -->
+                    
+                    <section id="line8" class="">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">References</h2><hr>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+                        
+                        <ul>
+                            <li>[1] <a href="https://www.watfordvalves.com/products.asp?ID=1&man=42">https://www.watfordvalves.com/products.asp?ID=1&amp;man=42</a></li>
+                            <li>[2] <a href="https://www.e-education.psu.edu/ae868/node/967">https://www.e-education.psu.edu/ae868/node/967</a></li>
+                            <li>[3] <a href="https://openbooks.library.umass.edu/funee/chapter/3-2/">https://openbooks.library.umass.edu/funee/chapter/3-2/</a></li>
+                            <li>[4] <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2023S/electricity/kirchhoff.html">https://weinman.cs.grinnell.edu/courses/CSC211/2023S/electricity/kirchhoff.html</a></li>
+                            <li>[5] <a href="https://sites.pitt.edu/~qiw4/Academic/ME2082/Transistor%20Basics.pdf">https://sites.pitt.edu/~qiw4/Academic/ME2082/Transistor%20Basics.pdf</a></li>
+                            <li>[6] <a href="https://openlab.citytech.cuny.edu/emtlabs/potentiometer/">https://openlab.citytech.cuny.edu/emtlabs/potentiometer/</a></li>
+                            <li>[7] <a href="https://physics.wwu.edu/variable-resistor">https://physics.wwu.edu/variable-resistor</a></li>
+                            <li>[8] <a href="https://www.cpp.edu/faculty/fkhoshnoud/lecture-32.pdf">https://www.cpp.edu/faculty/fkhoshnoud/lecture-32.pdf</a></li>
+                            <li>[9] <a href="https://resources.pcb.cadence.com/blog/2019-what-is-linear-and-nonlinear-resistance">https://resources.pcb.cadence.com/blog/2019-what-is-linear-and-nonlinear-resistance</a></li>
+                            <li>[10] <a href="https://web.stanford.edu/class/archive/engr/engr40m.1178/slides/signals.pdf">https://web.stanford.edu/class/archive/engr/engr40m.1178/slides/signals.pdf</a></li>
+                            <li>[11] <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html">https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html</a></li>
+                            <li>[12] <a href="https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf">https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf</a></li>
+                            <li>[13] <a href="https://lehman.edu/faculty/anchordoqui/lab2.pdf">https://lehman.edu/faculty/anchordoqui/lab2.pdf</a></li>
+                        </ul> 
+                        <!-- end list -->
                         
                     </section>
                     <!-- end section -->
