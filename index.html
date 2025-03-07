@@ -1066,6 +1066,17 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         <hr>
                         </section>
                         
+                        <section id="appx_kcl">
+                        <h4>Kirchhoff's Current Law (KCL)</h4>
+                        <p>Kirchhoff's Current Law states that the current entering a node must be equal to the current leaving the same node. For example, a single node at a four-way junction has two currents entering (<i>i<sub>1</sub></i>, <i>i<sub>2</sub></i>) and two respective currents leaving (<i>i<sub>3</sub></i>, <i>i<sub>4</sub></i>). The following would be true according to this principle:</p>
+                        <ul style="text-align-last: center;">
+                            <li><i>i<sub>1</sub></i> + <i>i<sub>2</sub></i> = <i>i<sub>3</sub></i> + <i>i<sub>4</sub></i></li>
+                            <li>OR</li>
+                            <li><i>i<sub>1</sub></i> + <i>i<sub>2</sub></i> + <i>(-i<sub>3</sub>)</i> + <i>(-i<sub>4</sub></i>) = <b>0</b></li>
+                        </ul>
+                        <hr>
+                        </section>
+                        
                         <section id="appx_rsd">
                             <h4>RSD</h4>
                             <p>RSD was the rebranded name of the east-German tube manufacturer—Rundfunk-und Fernmelde-Technik (RFT)—who sold and relabeled to other well-known German manufacturers for resale such as Telefunken and Siemens.</p>
@@ -1177,7 +1188,7 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         
                         <h5>Example: Series Resistors</h5>
                         <img src="images/KVL.svg" class="center" style="border: 3px solid black" width="350px">
-                        <br>
+                        <div style="text-align-last: center;"><p><i class="center">Simple series resistor circuit with 9V input voltage.</i></p></div>
                         <p>A basic circuit like the series resistor schematic above can easily display the law in action. A battery is supplying <b>9V</b> (DC) and we will use a current of <b><i>i</i> = 0.6A</b>. To determine if the voltage drops across each resistor will nullify our input voltage value, we use Ohm's Law over each component.</p>
                         <div style="text-align-last: center;">
                             <ul>
@@ -1194,12 +1205,13 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         <p>While there are edge cases where KVL is not applicable, the general audio circuit will most likely always satisfy this principle.</p>
                         <hr>
                         
-                        <h4>Fliege filter</h4>
-                        <p> [...]</p>
-                        <hr>
-                        
                         <h4>Sallen-Key filter</h4>
-                        <p> [...]</p>
+                        <p>The Sallen-Key topology supports second-order active filters. It is a degenerate of the voltage-controlled voltage-source filter (VCVS) topology, meaning that it is derived from a limiting case of the VCVS topology where one element—in this case, an infinite input impedance and zero output impedance—to implement 2-pole lowpass, highpass or bandpass filters. The filter, designed by R.P. Sallen and E.L. Key at the MIT Lincoln Laboratory (1955), utilizes a unity gain amplifier.</p>
+                        
+                        <img src="images/SallenKeyUGBuffer.svg" class="center" style="border: 3px solid black" width="400px">
+                        <div style="text-align-last: center;"><p><i class="center">Sallen-Key filter. See more <a href="https://www.rose-hulman.edu/class/ee/hoover/ece554_1/Lectures/Part%204%20OP%20AMPS/Sallen%E2%80%93Key%20topology%20-%20Wikipedia,%20the%20free%20encyclopedia.htm">here</a>.</i></p></div>
+
+                        <p>An amplification factor of 1 may not be beneficial for a signal boost, but the unit gain amplifier acts as a voltage buffer which prevents one amplification stage's input impedance from affecting the output impedance of a separate amplification stage. [16]</p>
                         <hr>
                         
                         <h4>State-variable filter</h4>
@@ -1242,6 +1254,8 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                             <li>[12] <a href="https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf">https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf</a></li>
                             <li>[13] <a href="https://lehman.edu/faculty/anchordoqui/lab2.pdf">https://lehman.edu/faculty/anchordoqui/lab2.pdf</a></li>
                             <li>[14] <a href="https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html">https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html</a></li>
+                            <li>[15] <a href="https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html">https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html</a></li>
+                            <li>[16] <a href="https://ultimateelectronicsbook.com/op-amp-voltage-buffer/">https://ultimateelectronicsbook.com/op-amp-voltage-buffer/</a></li>
                         </ul> 
                         <!-- end list -->
                         
