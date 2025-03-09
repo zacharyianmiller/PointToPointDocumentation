@@ -156,7 +156,12 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <p>The information in this manual is subject to change without notice and does not reflect the commitment of Hack Audio, LLC. The software products and subsequent libraries described in this document are subject to a License Agreement and may not be copied without granted access. For information on purchasing our plug-ins, please visit the Products section of www.hackaudio.com.</p>
+                                <p>The information in this manual is subject to change without notice and does not 
+                                    reflect the commitment of Hack Audio, LLC. The software products and subsequent 
+                                    libraries described in this document are subject to a License Agreement and may 
+                                    not be copied without granted access. For information on purchasing our plug-ins, 
+                                    please visit the Products section of www.hackaudio.com.
+                                </p>
                             </div>
                             <!-- end col -->
                         </div>
@@ -194,12 +199,35 @@
                         </div>
                         <!-- end row -->
                         
-                        <p>The Point-To-Point™ SDK is a static C++ library with a complimentary MATLAB prototyping wrapper developed to make digital circuit modeling more accessible to the audio software developer community. This library combines the strengths of nodal and modified nodal analysis, state-space, and Discrete-Kirchhoff (DK) methods to form a homogenized approach to accurate, real-time analog circuit modeling. Rather than generalizing a circuit’s characteristics, models are done at the component-level to allow for maximum customization options.</p>
-                        <p>Typical restrictions within discrete models are the computationally expensive iterative solvers (e.g., Newton-Raphson method) often found in non-linear component models. To optimize these methods, novel techniques are used to achieve a generalized stability throughout circuit chains—especially those that use multiple non-linear component models. While local computer efficiency, however, is at the forefront of general software’s value, we oppose CPU-saving approximations as to maintain the integrity of the circuit model. As consumer electronics become more efficient, the ability to stay true to circuit architecture becomes more achievable.</p>
-                        <p>We encourage all new users to visit <a href="https://hackaudio.com/">www.hackaudio.com</a> where you have access to our products and can keep up with any updates or additions to our software.</p>
+                        <p>The Point-To-Point™ SDK is a static C++ library with a complimentary MATLAB prototyping 
+                            wrapper developed to make digital circuit modeling more accessible to the audio software 
+                            developer community. This library combines the strengths of nodal and modified nodal 
+                            analysis, state-space, and Discrete-Kirchhoff (DK) methods to form a homogenized approach 
+                            to accurate, real-time analog circuit modeling. Rather than generalizing a circuit’s 
+                            characteristics, models are done at the component-level to allow for maximum customization 
+                            options.
+                        </p>
+                        
+                        <p>Typical restrictions within discrete models are the computationally expensive iterative 
+                            solvers (e.g., Newton-Raphson method) often found in non-linear component models. 
+                            To optimize these methods, novel techniques are used to achieve a generalized stability 
+                            throughout circuit chains—especially those that use multiple non-linear component models. 
+                            While local computer efficiency, however, is at the forefront of general software’s value,
+                            we oppose CPU-saving approximations as to maintain the integrity of the circuit model. As 
+                            consumer electronics become more efficient, the ability to stay true to circuit architecture 
+                            becomes more achievable.
+                        </p>
+                        
+                        <p>We encourage all new users to visit <a href="https://hackaudio.com/">www.hackaudio.com</a> 
+                            where you have access to our products and can keep up with any updates or additions to 
+                            our software.
+                        </p>
                         
                         <h4>Important Note</h4>
-                        <p>As this SDK is designed with audio developers in mind, the standard terminology for analog circuit components overlaps with the JUCE developer GUI vocabulary. Therefore, standard analog circuit components are hereby referred to as circuit <b><u>elements</u></b>.</p>
+                        <p>As this SDK is designed with audio developers in mind, the standard terminology for analog 
+                            circuit components overlaps with the JUCE developer GUI vocabulary. Therefore, standard 
+                            analog circuit components are hereby referred to as circuit <b><u>elements</u></b>.
+                        </p>
 
                     </section>
                     <!-- end section -->
@@ -239,7 +267,21 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div>Standard resistors (or “fixed resistors”) have a static resistance value where variable resistors have a terminal resistance, giving the functionality to parameterize gain for volume controls or be used as a general voltage regulator. Three-terminal variable resistors are also called <b><u>potentiometers</u></b> and should be used accordingly in your circuit models (see <a href="#appx_vdi">voltage divider</a>). Fixed resistors found in typical audio schematics are almost always linear—meaning it has an explicit <a href="#appx_vdr"><div class="tooltip">voltage drop<span class="tooltiptext">Defined by Ohm’s Law and used to support Kirchhoff’s Voltage Law (KVL), the voltage drop is the total voltage lost over one analog component or the entire circuit due to conductor resistance. Conductor resistance is merely how much a conductive medium/material opposes the flow of electric current.</span></div></a> across the element—and introduces resistance (or the restriction of electrical flow) between two nodes of a circuit. Resistors are measured in Ohms (Ω).</div>
+                                <div>Standard resistors (or “fixed resistors”) have a static resistance value where 
+                                    variable resistors have a terminal resistance, giving the functionality to 
+                                    parameterize gain for volume controls or be used as a general voltage regulator. 
+                                    Three-terminal variable resistors are also called <b><u>potentiometers</u></b> 
+                                    and should be used accordingly in your circuit models (see <a href="#appx_vdi">
+                                    voltage divider</a>). Fixed resistors found in typical audio schematics are almost 
+                                    always linear—meaning it has an explicit <a href="#appx_vdr"><div class="tooltip">
+                                    voltage drop<span class="tooltiptext">Defined by Ohm’s Law and used to support 
+                                    Kirchhoff’s Voltage Law (KVL), the voltage drop is the total voltage lost over 
+                                    one analog component or the entire circuit due to conductor resistance. Conductor 
+                                    resistance is merely how much a conductive medium/material opposes the flow of 
+                                    electric current.</span></div></a> across the element—and introduces resistance 
+                                    (or the restriction of electrical flow) between two nodes of a circuit. Resistors 
+                                    are measured in Ohms (Ω).
+                                </div>
                                 
                                 <br>
                                 
@@ -270,30 +312,85 @@
                         </div>
                         <!-- end row -->
                         
-                        <p>The following circuits are currently available in all languages with the same naming convention. Note that the labels used to group circuits together may vary in our sister plug-in—the <a href="https://hackaudio.com/analog-circuit-factory/">Analog Circuit Factory</a>.</p>
+                        <p>The following circuits are currently available in all languages with the same naming 
+                            convention. Note that the labels used to group circuits together may vary in our sister 
+                            plug-in—the <a href="https://hackaudio.com/analog-circuit-factory/">Analog Circuit Factory</a>.
+                        </p>
 
                         <h4 id="line4_1">Amplifier clippers</h4>
-                        <p>Amplifier clipper circuits model the nonlinear distortion effects of tube amplifiers—and more specifically the preamplifier—where the input signal is effectively increased and distorted in some way. Historically copied from its use in classic Fender amps, the ECC83/12AX7 dual-triode vacuum tube has become the most common electrical component for boosting signal gain and is preferred by guitar enthusiasts over solid-state transistor alternatives to this day.</p>
+                        <p>Amplifier clipper circuits model the nonlinear distortion effects of tube amplifiers—and 
+                            more specifically the preamplifier—where the input signal is effectively increased and 
+                            distorted in some way. Historically copied from its use in classic Fender amps, the 
+                            ECC83/12AX7 dual-triode vacuum tube has become the most common electrical component 
+                            for boosting signal gain and is preferred by guitar enthusiasts over solid-state transistor 
+                            alternatives to this day.
+                        </p>
 
                         <h4 id="line4_2">Amplifier tone stacks</h4>
-                        <p>Similar to a console equalizer, amplifier tone stacks perform spectral filtering to alter the frequency response of an input signal. Circuit models that only include passive components (e.g., resistors and capacitors) only have the ability to reduce specific areas of the frequency spectrum while active filter circuits that use operational amplifiers (or sometimes diodes) have the capacity to boost spectral information.</p>
+                        <p>Similar to a console equalizer, amplifier tone stacks perform spectral filtering to alter 
+                            the frequency response of an input signal. Circuit models that only include passive 
+                            components (e.g., resistors and capacitors) only have the ability to reduce specific 
+                            areas of the frequency spectrum while active filter circuits that use operational 
+                            amplifiers (or sometimes diodes) have the capacity to boost spectral information.
+                        </p>
 
                         <h4 id="line4_3">Clipping circuits</h4>
-                        <p>For solid-state component models, germanium or silicon semiconductor types are available. The main differences between the two are the discretized modelling parameters based on the Ebers-Moll BJT/coupled-diodes model including the <b><u>saturation current</u></b> (based on the diode’s reverse biased current or the transistor’s base-emitter/base-collector saturation current) and the <b><u>emission coefficient</u></b> (also called the “ideality factor”) due to how close the diode is to its ideal form. For audio applications, the emission coefficient changes as the component degrades over time, satisfying the desire for the modeling of older hardware.</p>
+                        <p>For solid-state component models, germanium or silicon semiconductor types are available. 
+                            The main differences between the two are the discretized modelling parameters based on 
+                            the Ebers-Moll BJT/coupled-diodes model including the <b><u>saturation current</u></b> 
+                            (based on the diode’s reverse biased current or the transistor’s base-emitter/base-collector 
+                            saturation current) and the <b><u>emission coefficient</u></b> (also called the “ideality 
+                            factor”) due to how close the diode is to its ideal form. For audio applications, the 
+                            emission coefficient changes as the component degrades over time, satisfying the desire 
+                            for the modeling of older hardware.
+                        </p>
                         
                         <h4 id="line4_4">EQ circuits</h4>
-                        <p>Equalizer circuits specifically refer to multiband filters. Baxandall equalizers are shelving filters characterized by a gentle slope transition. Because the Q factor is so gradual, the filter bandwidth often covers the entire input signal where the altered portion of the signal often flattens out beyond the sampling Nyquist rate. While two-band Baxandall equalizers have low and high shelves, three-band and four-band equalizers include low-resonance peaking filters. Baxandall filters that include a balance parameter have the ability to attenuate or boost the overall filter response gain by approximately ±4.5dBFS.</p>
-                        <p>For equalizers with greater control, the <b>Graphic 7 Bands</b> preset is an active EQ with seven static frequency gain attenuators and a fixed resonance. The <b>Parametric 4 Bands</b>, <b>Peaking 2 Bands</b>, and <b>Shelving 2 Bands</b> presets are all parametric equalizers meaning they have both variable frequency and gain parameters.</p>
-                        <p>The only passive circuit is the conjunctive bandpass filter, <b>Low Pass High Pass</b>, that lacks a peaking resonance parameter.</p>
+                        <p>Equalizer circuits specifically refer to multiband filters. Baxandall equalizers are 
+                            shelving filters characterized by a gentle slope transition. Because the Q factor is 
+                            so gradual, the filter bandwidth often covers the entire input signal where the altered 
+                            portion of the signal often flattens out beyond the sampling Nyquist rate. While two-band 
+                            Baxandall equalizers have low and high shelves, three-band and four-band equalizers include 
+                            low-resonance peaking filters. Baxandall filters that include a balance parameter have the 
+                            ability to attenuate or boost the overall filter response gain by approximately ±4.5dBFS.
+                        </p>
+                        
+                        <p>For equalizers with greater control, the <b>Graphic 7 Bands</b> preset is an active EQ with 
+                            seven static frequency gain attenuators and a fixed resonance. The <b>Parametric 4 Bands</b>, 
+                            <b>Peaking 2 Bands</b>, and <b>Shelving 2 Bands</b> presets are all parametric equalizers 
+                            meaning they have both variable frequency and gain parameters.
+                        </p>
+                        
+                        <p>The only passive circuit is the conjunctive bandpass filter, <b>Low Pass High Pass</b>, that 
+                            lacks a peaking resonance parameter.
+                        </p>
                         
                         <h4 id="line4_5">Filter circuits</h4>
-                        <p>The Filter Circuits are comprised of single-banded filter types (e.g., low-pass, high-pass, bandpass, notch, peaking) that are either fixed frequency or have some kind of variable gain /resonance parameter. The <b>State Variable (SV)</b> filters are all derived from one base circuit. To extract specific filter types, a standard set of ratios between filter types is defined. A slight development of the SV filter, the <b>Biquad filter</b>, is characterized by its continuous-time transfer function which is a quadratic equation on both its numerator and denominator. The Biquad’s filters are also derived from a single circuit but have varying output types compared to the SV filter. Because of its optimal flat passband – characteristic of Butterworth filter topologies. It should be noted that the signal phase is inverted for the SV low-pass, SV high-pass, and Biquad bandpass.</p>
+                        <p>The Filter Circuits are comprised of single-banded filter types (e.g., low-pass, high-pass, 
+                            bandpass, notch, peaking) that are either fixed frequency or have some kind of variable 
+                            gain/resonance parameter. The <b>State Variable (SV)</b> filters are all derived from 
+                            one base circuit. To extract specific filter types, a standard set of ratios between 
+                            filter types is defined. A slight development of the SV filter, the <b>Biquad filter</b>, 
+                            is characterized by its continuous-time transfer function which is a quadratic equation 
+                            on both its numerator and denominator. The Biquad’s filters are also derived from a single 
+                            circuit but have varying output types compared to the SV filter. Because of its optimal 
+                            flat passband – characteristic of Butterworth filter topologies. It should be noted that 
+                            the signal phase is inverted for the SV low-pass, SV high-pass, and Biquad bandpass.
+                        </p>
                         
                         <h4 id="line4_6">Pedal circuits</h4>
-                        <p>These circuits include the tone sections and clipping sections of classic guitar pedals. Similar to the EQ Circuits and Filter Circuits, guitar pedals also offer passive and active filter schematics. The general architecture of a pedal—besides input/output stages, summing stages, or a power supply—is one characterizing tone stage and clipping stage as opposed to multiple gain stages in a guitar amplifier.</p>
+                        <p>These circuits include the tone sections and clipping sections of classic guitar pedals. 
+                            Similar to the EQ Circuits and Filter Circuits, guitar pedals also offer passive and active 
+                            filter schematics. The general architecture of a pedal—besides input/output stages, summing 
+                            stages, or a power supply—is one characterizing tone stage and clipping stage as opposed 
+                            to multiple gain stages in a guitar amplifier.
+                        </p>
                         
                         <h4 id="line4_7">Lite circuits</h4>
-                        <p>Lite circuits are static filtering circuits only available in the lite version of the library. They are included to showcase fixed-frequency emulations of Fliege, Sallen-Key, State-Variable, and Twin filters.</p>
+                        <p>Lite circuits are static filtering circuits only available in the lite version of the 
+                            library. They are included to showcase fixed-frequency emulations of Fliege, 
+                            Sallen-Key, State-Variable, and Twin filters.
+                        </p>
                         
                     </section>
                     <!-- end section -->
@@ -666,20 +763,32 @@
 
                         <br>
 
-                        <p><b>N<sub>Nd</sub></b> = <u>Total number of nodes in the circuit.</u> The input value must be an integer. Node 0 denotes ground and can be used more than once.</p>
-                        <p><b>N<sub>VR</sub></b> = <u>Total number of variable resistor elements in the circuit.</u> The input value must be an integer and greater than 0. Each value should be unique.</p>
+                        <p><b>N<sub>Nd</sub></b> = <u>Total number of nodes in the circuit.</u> The input value must 
+                            be an integer. Node 0 denotes ground and can be used more than once.
+                        </p>
+                        
+                        <p><b>N<sub>VR</sub></b> = <u>Total number of variable resistor elements in the circuit.</u> 
+                            The input value must be an integer and greater than 0. Each value should be unique.
+                        </p>
                         
                         <hr>
                 
                         <h4 id="line5_2">XML</h4>
-                        <p>XML circuitry is the foundation for clean and efficient modeling in the Point-To-Point™ library featuring compatibility with the MATLAB prototyping library and the standard SDK’s C++ processors. Consider the most basic structure of an XML script:</p>
+                        <p>XML circuitry is the foundation for clean and efficient modeling in the Point-To-Point™ 
+                            library featuring compatibility with the MATLAB prototyping library and the standard 
+                            SDK’s C++ processors. Consider the most basic structure of an XML script:
+                        </p>
+                        
                         <pre>&lt;root&gt;
     &lt;child&gt;
         &lt;subchild&gt; [...] &lt;/subchild&gt;
     &lt;/child&gt;
 &lt;/root&gt;</pre>
                         
-                        <p>The XML circuits follow standard XML syntax. Because each file should support Unicode, specify as such in the script's prolog. Additionally, set the root (or "parent") element for the script as a "PointToPointCircuit".</p>
+                        <p>The XML circuits follow standard XML syntax. Because each file should support Unicode, 
+                            specify as such in the script's prolog. Additionally, set the root (or "parent") 
+                            element for the script as a "PointToPointCircuit".
+                        </p>
                         
                         <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;PointToPointCircuit&gt;
@@ -691,8 +800,19 @@
                         <p>Consider the following RC lowpass filter as an example for our custom XML script:</p>
                         <img src="images/RCLPF.svg" alt="rclpf" style="width:350px" class="aligncenter">
 
-                        <p>A circuit name and category are necessary to keep like circuits organized. Circuit categories are usually based on the medium for which the circuit is predominately used (e.g., guitar amplifiers or pedals, basic filters or equalizers, etc.) and any other pertinent subcategories (e.g., tone stack).</p>
-                        <p>First define the preferred name and of what circuit family you want it to belong to. Inside a "Settings" tag, the total number of nodes and a <a href="#appx_dc">digital DC blocker</a> flag are instantiated. If you are using these circuits inside the Analog Circuit Factory plug-in, an additional output trim knob can be populated by adding an "Output" tag with its defaulting value [0,1]. In custom circuits, this can otherwise be replicated by a digital linear gain parameter on the output signal.</p>
+                        <p>A circuit name and category are necessary to keep like circuits organized. Circuit 
+                            categories are usually based on the medium for which the circuit is predominately 
+                            used (e.g., guitar amplifiers or pedals, basic filters or equalizers, etc.) and 
+                            any other pertinent subcategories (e.g., tone stack).
+                        </p>
+                        
+                        <p>First define the preferred name and of what circuit family you want it to belong to. 
+                            Inside a "Settings" tag, the total number of nodes and a <a href="#appx_dc">digital DC blocker</a> 
+                            flag are instantiated. If you are using these circuits inside the Analog Circuit Factory 
+                            plug-in, an additional output trim knob can be populated by adding an "Output" tag with 
+                            its defaulting value [0,1]. In custom circuits, this can otherwise be replicated by a 
+                            digital linear gain parameter on the output signal.
+                        </p>
                         
     <pre>&lt;Name&gt;RCLPF&lt;/Name&gt;
 &lt;Category&gt;BasicFilters&lt;/Category&gt;
@@ -702,8 +822,20 @@
 &lt;/Settings&gt;
 </pre>
 
-                        <p>Similar to our settings definition, our circuit elements are defined under specific element-specific tags. Elements can be added in no particular order with no limit. If one or more of an element is present in a circuit, each instance in the script should be enclosed by a parent tag (e.g., Rs, VarRs, Pots, Cs, Ds, OPAmps, BJTs, Tube12AX7s or Vs for voltage sources) and each individual  element should enclose its parameters with a child tag (e.g., Resistor, VariableResistor, Potentiometer, Capacitor, Diode, OPAmp, Tube or VoltageSource). Variable resistors and potentiometers support a label class to organize your knobs. Voltage inputs and outputs only should exist once for a given circuit model, so a parent tag is not required.</p>
-                        <p>When a component is wired to ground, you should always use <b>Node #2</b> for the zero value. Ground is not considered in the total nodes for a circuit.</p>
+                        <p>Similar to our settings definition, our circuit elements are defined under specific 
+                            element-specific tags. Elements can be added in no particular order with no limit.
+                            If one or more of an element is present in a circuit, each instance in the script should 
+                            be enclosed by a parent tag (e.g., Rs, VarRs, Pots, Cs, Ds, OPAmps, BJTs, Tube12AX7s or 
+                            Vs for voltage sources) and each individual  element should enclose its parameters with 
+                            a child tag (e.g., Resistor, VariableResistor, Potentiometer, Capacitor, Diode, OPAmp, 
+                            Tube or VoltageSource). Variable resistors and potentiometers support a label class to 
+                            organize your knobs. Voltage inputs and outputs only should exist once for a given circuit 
+                            model, so a parent tag is not required.
+                        </p>
+                        
+                        <p>When a component is wired to ground, you should always use <b>Node #2</b> for the zero 
+                            value. Ground is not considered in the total nodes for a circuit.
+                        </p>
                         
                             <pre>&lt;Elements&gt; 
     &lt;VoltageInput&gt; 
@@ -730,12 +862,20 @@
     &lt;/Cs&gt; 
 &lt;/Elements&gt;
 </pre>
-                        <p>For an XML template that supports all circuit elements, click <a href="templates/templateCircuit.xml" download="templateCircuit.xml"> here</a>.</p>
+                        <p>For an XML template that supports all circuit elements, click 
+                            <a href="templates/templateCircuit.xml" download="templateCircuit.xml"> here</a>.
+                        </p>
 
                         <h4 id="line5_3">C++</h4>
-                        <p>If you would rather store your circuit models as object-oriented classes, the Point-To-Point™ library's API supports self-containment to run without dependencies on imported circuits. The API is comprised of standard audio programming function calls, taking and returning generic data types that can easily be replaced or rewritten for JUCE integration.</p>
+                        <p>If you would rather store your circuit models as object-oriented classes, the Point-To-Point™ 
+                            library's API supports self-containment to run without dependencies on imported circuits. 
+                            The API is comprised of standard audio programming function calls, taking and returning 
+                            generic data types that can easily be replaced or rewritten for JUCE integration.
+                        </p>
                     
-                        <p>Custom circuits are defined as a single class (often represented as one header file) with circuit parameters defined in the class constructor.</p>
+                        <p>Custom circuits are defined as a single class (often represented as one header file) with 
+                            circuit parameters defined in the class constructor.
+                        </p>
 <pre>#include "Circuit.h"
 
 class RCLPF : public Circuit
@@ -752,9 +892,21 @@ public:
 };
 </pre>
 
-                        <p>Taking from the settings paramteres in our XML circuit template, we will also define the position of our circuit elements all in one place. It is important that all pertinent elements are assigned to the <b><i>layout</i></b> object and that elements—no matter the amount—should be assigned as an <b><i>std::vector</i></b>. Additionally, elements are referenced from the <b><i>CircuitElement</i></b> namespace to ensure modeling functionality and compatibility within our circuit processors. The name of an individual element does not matter as long as it is assigned accordingly within the vector of respective CircuitElements in our layout object.</p>                                                
+                        <p>Taking from the settings paramteres in our XML circuit template, we will also define 
+                            the position of our circuit elements all in one place. It is important that all pertinent 
+                            elements are assigned to the <b><i>layout</i></b> object and that elements—no matter the 
+                            amount—should be assigned as an <b><i>std::vector</i></b>. Additionally, elements are 
+                            referenced from the <b><i>CircuitElement</i></b> namespace to ensure modeling functionality 
+                            and compatibility within our circuit processors. The name of an individual element does 
+                            not matter as long as it is assigned accordingly within the vector of respective CircuitElements 
+                            in our layout object.
+                        </p>                                                
                         
-                        <p>The <b><i>CircuitModel</i></b> class that our inherited <b><i>Circuit</i></b> class references is a hidden processor inside the SDK. Regardless, the <b><i>CircuitLayout</i></b> (instantiated as <b><i>layout</i></b>) contains members that can be assigned when constructing your custom circuit or customizing an existing one.</p>
+                        <p>The <b><i>CircuitModel</i></b> class that our inherited <b><i>Circuit</i></b> class 
+                            references is a hidden processor inside the SDK. Regardless, the <b><i>CircuitLayout</i></b> 
+                            (instantiated as <b><i>layout</i></b>) contains members that can be assigned when 
+                            constructing your custom circuit or customizing an existing one.
+                        </p>
                         
                         <details>
                             <summary>Resistors</summary><pre>
@@ -851,7 +1003,9 @@ layout.Tube12AX7s = std::vector&lt;CircuitElement::Tube12AX7&gt; { TUBE1, TUBE2,
                         <br>
                          
                         <h5>Public Member Functions</h5>
-                        <p>The following functions belong to the Circuit class, meaning that these should be used in the main DSP processing of your circuit(s):</p>
+                        <p>The following functions belong to the Circuit class, meaning that these should be used in 
+                            the main DSP processing of your circuit(s):
+                        </p>
                         <pre>void <b>process</b> (const float* input, <span style="color: grey">// buffer pointer</span>
               float* output, <span style="color: grey">// buffer pointer</span>
               int numSamples, <span style="color: grey">// buffer length</span>
@@ -865,17 +1019,29 @@ layout.Tube12AX7s = std::vector&lt;CircuitElement::Tube12AX7&gt; { TUBE1, TUBE2,
                         
                         <pre>float <b>processSample</b> (float x, <span style="color: grey">// sample by value</span>
                      int channel) <span style="color: grey">// [0,1]</span></pre>
-                        <p>Per-sample processor that is not dependent on a fixed buffer. This is often implemented in a custom block processor similar to <b><i>process</i></b> or <b><i>processInPlace</i></b>. Note that all the above processor functions support two-channel non-interleaved processing.</p>
+                        <p>Per-sample processor that is not dependent on a fixed buffer. This is often implemented in 
+                            a custom block processor similar to <b><i>process</i></b> or <b><i>processInPlace</i></b>. 
+                            Note that all the above processor functions support two-channel non-interleaved processing.
+                        </p>
                         
                         <pre>void <b>prepare</b> (double sampleRate, <span style="color: grey">// circuit sampling rate</span>
               int bufferSize) <span style="color: grey">// samples per buffer</span></pre>
-                        <p>Processor initializer that should be called before processing occurs. The JUCE framework utilizes the <a href="https://docs.juce.com/master/classAudioProcessor.html#a44b74778247a35a669a3a994d814389e">AudioProcessor</a>'s <b><i>prepareToPlay</i></b> function that is called per internal calls.</p>
+                        <p>Processor initializer that should be called before processing occurs. The JUCE framework 
+                            utilizes the <a href="https://docs.juce.com/master/classAudioProcessor.html#a44b74778247a35a669a3a994d814389e">
+                            AudioProcessor</a>'s <b><i>prepareToPlay</i></b> function that is called per internal calls.
+                        </p>
                         
                         <pre>std::vector&lt;double&gt; <b>setParameters</b> (std::vector&lt;double&gt; parameters)<span style="color: grey"> // parameter array</span></pre>
-                        <p>General connection between your main processor's parameter states and the circuit's internal parameter states. As an alternative for larger systems, the JUCE framework supports the retrieval of <b><i>raw parameter values</i></b> (as atomic float pointers) insider the constructor of your circuit.</p>
+                        <p>General connection between your main processor's parameter states and the circuit's internal 
+                            parameter states. As an alternative for larger systems, the JUCE framework supports the 
+                            retrieval of <b><i>raw parameter values</i></b> (as atomic float pointers) insider the 
+                            constructor of your circuit.
+                        </p>
                         
                         <pre>void <b>setSamples4Smooth</b> (int samples4Smooth)<span style="color: grey"> // smoothing ramp size</span></pre>
-                        <p>Sets smoothing time for all parameterized elements in a circuit. If you are wanting a specific millisecond ramp, consider replacing samples4Smooth with a basic conversion:</p>
+                        <p>Sets smoothing time for all parameterized elements in a circuit. If you are wanting a specific 
+                            millisecond ramp, consider replacing samples4Smooth with a basic conversion:
+                        </p>
                         <pre>int samples4Smooth = targetMilliseconds / 1000 * sampleRate;</pre>
                                          
                         <p>The inside of our RC lowpass class constructor should look as follows:</p>
@@ -897,10 +1063,29 @@ circuit = CircuitModel(layout);
 </pre>
                         <p> </p>
                         <h4 id="line5_4">MATLAB</h4>
-                        <p>The MATLAB version of the Point-To-Point™ library is a 1:1 functional recreation of the C++ library that introduces a testing script for rapid prototyping. Included in the test script is a waveform oscillator, frequency repsonse, total harmonic distortion (THD) plot, and a DC sweep analysis plot.</p>
+                        <p>The MATLAB version of the Point-To-Point™ library is a 1:1 functional 
+                            recreation of the C++ library that introduces a testing script for rapid 
+                            prototyping. Included in the test script is a waveform oscillator, frequency 
+                            repsonse, total harmonic distortion (THD) plot, and a DC sweep analysis plot.
+                        </p>
                         
                         <h5>Custom Circuits</h5>
-                        <p>Object-oriented programming (OOP) in MATLAB allows for you to copy over your C++ classes. Similar to our C++ format, any custom circuit made with the Point-To-Point™ library will inherit a <b><i>Circuit</i></b> class which itself inherits from the abstract <b><i>CircuitProcessor</i></b> class that contains all necessary virtual processing functions for your circuit. The general structure for a circuit only contains a class constructor that references the <b><i>layout</i></b> and <b><i>circuit</i></b> members. The <b><i>layout</i></b> property of the inheritied <b><i>Circuit</i></b> class allows for elements, relevant voltage sources, nodes totals, output gain parameters, and the DC blocker flag to be initialized. Note that the C++ supports these members as part of the <b><i>CircuitLayout</i></b> struct while the MATLAB version layout variables are accessed as normal members. The <b><i>CircuitLayout</i></b> constructor handles the assignment of element arrays (as well as voltage sources and output gain parameters) to be passed on to processing. The DC blocker flag is defaulted to <b><u>false</u></b> and only needs to be explicitly initialized if it is necessary.</p>
+                        <p>Object-oriented programming (OOP) in MATLAB allows for you to copy over your 
+                            C++ classes. Similar to our C++ format, any custom circuit made with the 
+                            Point-To-Point™ library will inherit a <b><i>Circuit</i></b> class which itself 
+                            inherits from the abstract <b><i>CircuitProcessor</i></b> class that contains 
+                            all necessary virtual processing functions for your circuit. The general structure 
+                            for a circuit only contains a class constructor that references the <b><i>layout</i></b> 
+                            and <b><i>circuit</i></b> members. The <b><i>layout</i></b> property of the 
+                            inheritied <b><i>Circuit</i></b> class allows for elements, relevant voltage 
+                            sources, nodes totals, output gain parameters, and the DC blocker flag to be 
+                            initialized. Note that the C++ supports these members as part of the 
+                            <b><i>CircuitLayout</i></b> struct while the MATLAB version layout variables 
+                            are accessed as normal members. The <b><i>CircuitLayout</i></b> constructor 
+                            handles the assignment of element arrays (as well as voltage sources and output 
+                            gain parameters) to be passed on to processing. The DC blocker flag is defaulted 
+                            to <b><u>false</u></b> and only needs to be explicitly initialized if it is necessary.
+                        </p>
                         
                         <pre><span style="color: blue">classdef</span> RCLPF &lt; Circuit
     <span style="color: blue">methods</span>
@@ -920,7 +1105,10 @@ circuit = CircuitModel(layout);
     <span style="color: blue">end</span>
 <span style="color: blue">end</span></pre>
                         
-                        <p>Similarly to how the C++ elements are used in your circuit constructors, the following are examples of each circuit element type and how they would be implemented in a custom circuit like the one above:</p>
+                        <p>Similarly to how the C++ elements are used in your circuit constructors, the following are 
+                            examples of each circuit element type and how they would be implemented in a custom circuit 
+                            like the one above:
+                        </p>
                         
                         <details>
                             <summary>Resistors</summary><pre>
@@ -1019,12 +1207,35 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         <br>
                                 
                         <h5>Circuit Testing</h5>
-                        <p>If you are interested in the characteristics of a circuit that has any kind of clipping, the waveform oscillator will compare a sine wave input to the output of the circuit. To find the harmonics created by a circuit, the THD plot introduces a high-frequency sine wave and converts the output to the frequency domain via the fast Fourier transform (FFT). The built-in FFT function from MATLAB labels our peaks with the appropriate harmonic numbers show only even, only odd, or a mixture of harmonics. Additionally, the noise floor of our signal can be measured in decibels (dB) by examining the noise-like black signal on the plot's bottom bound.</p>
-                        <p>To analyze a filter circuit, plot the frequency response of a filter system via an impulse response (IR) that has been passed through your circuit. The IR length is defaulted to size <b>N = 2<sup>13</sup> = 8192</b>. The typical Cooley-Tukey radix-2 FFT algorithm requires the transform's input to be a power of 2 (POT), but because MATLAB uses MIT's FFTW (Fastest Fourier Transform in the West), NPOT values are still processed effectively. MATLAB offers the <a href="https://www.mathworks.com/help/matlab/ref/double.nextpow2.html">nextpow2</a> function to pad your impulse response input.</p>
+                        <p>If you are interested in the characteristics of a circuit that has any kind of clipping, 
+                            the waveform oscillator will compare a sine wave input to the output of the circuit. 
+                            To find the harmonics created by a circuit, the THD plot introduces a high-frequency sine 
+                            wave and converts the output to the frequency domain via the fast Fourier transform (FFT). 
+                            The built-in FFT function from MATLAB labels our peaks with the appropriate harmonic numbers 
+                            show only even, only odd, or a mixture of harmonics. Additionally, the noise floor of our 
+                            signal can be measured in decibels (dB) by examining the noise-like black signal on the 
+                            plot's bottom bound.
+                        </p>
+                        <p>To analyze a filter circuit, plot the frequency response of a filter system via an impulse 
+                            response (IR) that has been passed through your circuit. The IR length is defaulted to 
+                            size <b>N = 2<sup>13</sup> = 8192</b>. The typical Cooley-Tukey radix-2 FFT algorithm 
+                            requires the transform's input to be a power of 2 (POT), but because MATLAB uses MIT's 
+                            FFTW (Fastest Fourier Transform in the West), NPOT values are still processed effectively. 
+                            MATLAB offers the <a href="https://www.mathworks.com/help/matlab/ref/double.nextpow2.html">
+                            nextpow2</a> function to pad your impulse response input.
+                        </p>
                         
-                        <p>The test script can take either a MATLAB m-file circuit from the circuit template or an XML circuit. Depending on the circuit that you want to prototype, make sure the deprecated circuit is commented out. Additionally, you can port your circuit from its MATLAB class form to XML from the testing script via the <b><i>saveXMLCircuit</i></b> function.</p>
+                        <p>The test script can take either a MATLAB m-file circuit from the circuit template 
+                            or an XML circuit. Depending on the circuit that you want to prototype, make sure 
+                            the deprecated circuit is commented out. Additionally, you can port your circuit 
+                            from its MATLAB class form to XML from the testing script via the 
+                            <b><i>saveXMLCircuit</i></b> function.
+                        </p>
                                 
-                        <p>Note that, to access your circuit's capacity in the testing script, the <b><i>PointToPointIncludes</i></b> and <b><i>PointToPointRemoves</i></b> should be readable in your MATLAB <b><u>Current Folder</u></b> path.</p>
+                        <p>Note that, to access your circuit's capacity in the testing script, the 
+                            <b><i>PointToPointIncludes</i></b> and <b><i>PointToPointRemoves</i></b> 
+                            should be readable in your MATLAB <b><u>Current Folder</u></b> path.
+                        </p>
 
                     </section>
                     <!-- end section -->
@@ -1038,13 +1249,17 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         </div>
                         <!-- end row -->
                         
-                        <p>For more about the Point-To-Point™ library, Hack Audio's founder Dr. Eric Tarr introduced the SDK at the 2022 Audio Developers Conference in London, England.</p>
+                        <p>For more about the Point-To-Point™ library, Hack Audio's founder Dr. Eric Tarr introduced 
+                            the SDK at the 2022 Audio Developers Conference in London, England.</p>
                         
                         <iframe width="640" height="360" class="center" src="https://www.youtube.com/embed/ghHMkCL5lIA" title="Point to Point Modeling: An Automatic Circuit Solving Library - Eric Tarr - ADC22" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         
                         <br>
                         
-                        <p>To see the library in action, check out the videos on the <a href="https://hackaudio.com/analog-circuit-factory/">Analog Circuit Factory</a> landing page where Dr. Eric Tarr and Hack Audio developer Tim Leete have demoed the plug-in.</p>
+                        <p>To see the library in action, check out the videos on the <a href="https://hackaudio.com/analog-circuit-factory/">
+                            Analog Circuit Factory</a> landing page where Dr. Eric Tarr and Hack Audio developer Tim Leete have demoed the 
+                            plug-in.
+                        </p>
                         
                     </section>
                     
@@ -1062,13 +1277,20 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
 
                         <section id="appx_vdr">
                         <h4>Voltage drop</h4>
-                        <p>Defined by Ohm’s Law and used to support Kirchhoff’s Voltage Law (KVL), the voltage drop is the total voltage lost over one analog component or the entire circuit due to conductor resistance. Conductor resistance is merely how much a conductive medium/material opposes the flow of electric current.</p>
+                        <p>Defined by Ohm’s Law and used to support Kirchhoff’s Voltage Law (KVL), the voltage drop is 
+                            the total voltage lost over one analog component or the entire circuit due to conductor 
+                            resistance. Conductor resistance is merely how much a conductive medium/material opposes 
+                            the flow of electric current.</p>
                         <hr>
                         </section>
                         
                         <section id="appx_kcl">
                         <h4>Kirchhoff's Current Law (KCL)</h4>
-                        <p>Kirchhoff's Current Law states that the current entering a node must be equal to the current leaving the same node. For example, a single node at a four-way junction has two currents entering (<i>i<sub>1</sub></i>, <i>i<sub>2</sub></i>) and two respective currents leaving (<i>i<sub>3</sub></i>, <i>i<sub>4</sub></i>). The following would be true according to this principle:</p>
+                        <p>Kirchhoff's Current Law states that the current entering a node must be equal to the current 
+                            leaving the same node. For example, a single node at a four-way junction has two currents 
+                            entering (<i>i<sub>1</sub></i>, <i>i<sub>2</sub></i>) and two respective currents leaving 
+                            (<i>i<sub>3</sub></i>, <i>i<sub>4</sub></i>). The following would be true according to this 
+                            principle:</p>
                         <ul style="text-align-last: center;">
                             <li><i>i<sub>1</sub></i> + <i>i<sub>2</sub></i> = <i>i<sub>3</sub></i> + <i>i<sub>4</sub></i></li>
                             <li>OR</li>
@@ -1079,15 +1301,21 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         
                         <section id="appx_rsd">
                             <h4>RSD</h4>
-                            <p>RSD was the rebranded name of the east-German tube manufacturer—Rundfunk-und Fernmelde-Technik (RFT)—who sold and relabeled to other well-known German manufacturers for resale such as Telefunken and Siemens.</p>
+                            <p>RSD was the rebranded name of the east-German tube manufacturer—Rundfunk-und Fernmelde-Technik 
+                                (RFT)—who sold and relabeled to other well-known German manufacturers for resale such as 
+                                Telefunken and Siemens.</p>
                             <p> Rundfunk- und Fernmelde-Technik translates to “broadcasting and telecommunications technology.”</p>
                             <hr>
                         </section>
                         
                         <section id="appx_dc">
                             <h4>DC blocker (digital)</h4>
-                            <p>Functionally, the digital DC blocker acts as a high-pass filter that attenuates near-zero values. In hardware circuits, capacitave coupling may introduce a DC component which, in the frequency domain, populates in the low frequencies—usually at zero. Multiple instances of these circuits can cause audio mixing imbalances as these signals compound.</p>
-                            <p>Generally, the digital DC blocker subtracts the average of the signal over time. For example a square wave with peaking values of [-1,1] have a DC offset (or just offset) of 0.5. </p>
+                            <p>Functionally, the digital DC blocker acts as a high-pass filter that attenuates near-zero 
+                                values. In hardware circuits, capacitave coupling may introduce a DC component which, in 
+                                the frequency domain, populates in the low frequencies—usually at zero. Multiple instances 
+                                of these circuits can cause audio mixing imbalances as these signals compound.</p>
+                            <p>Generally, the digital DC blocker subtracts the average of the signal over time. For example 
+                                a square wave with peaking values of [-1,1] have a DC offset (or just offset) of 0.5. </p>
                             <hr>
                         </section>
                         
@@ -1097,21 +1325,43 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                             <div style="text-align-last: center;"><p><i>Schematic symbol of a diode.</i></p></div>
                             
                             <p>An electrical component with two polarized terminals (e.g, anode and cathode). </p>
-                            <p>The ideal diode is meant to control the direction of current flow. When the voltage over a diode is negative, the component acts as an open circuit and passes no current. Inversely, when the input voltage is positive, the component acts as a short circuit and should pass 0V. We know, however, that these are ideals and that the average diode implemented in an audio schematic is more complex as a nonlinear element. The semiconductor diode—the most common diode type—requires a certain amount of voltage to pass current. Consider the current voltage relationship of two common semiconductor diode types:</p>
+                            <p>The ideal diode is meant to control the direction of current flow. When the voltage 
+                                over a diode is negative, the component acts as an open circuit and passes no current. 
+                                Inversely, when the input voltage is positive, the component acts as a short circuit 
+                                and should pass 0V. We know, however, that these are ideals and that the average diode 
+                                implemented in an audio schematic is more complex as a nonlinear element. The semiconductor 
+                                diode—the most common diode type—requires a certain amount of voltage to pass current. 
+                                Consider the current voltage relationship of two common semiconductor diode types:
+                            </p>
                             
                             <img src="images/diodeIV.png" class="center" style="border: 3px solid black" width="350px">
-                            <div style="text-align-last: center;"><p><i>Typical I-V characteristic of silicon and germanium diodes. See more <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html">here</a>.</i></p></div>
+                            <div style="text-align-last: center;"><p><i>Typical I-V characteristic of silicon and germanium 
+                                diodes. See more <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html">here</a>.</i></p></div>
                             
-                            <p>Note that the forward bias quadrant signifies when the diode is "on" and the reverse bias when it is "off". Even though in the reverse bias quadrant the diode ideally passes no signal, it passes a negligible amount (nA, nanoamperes) called reverse saturation current. The saturation current of each diode is dependent on its semiconductor type. There is also a case that a diode is overloaded into a "breakdown" stage where negative signal passes inversely over the diode from cathode to anode.</p>
+                            <p>Note that the forward bias quadrant signifies when the diode is "on" and the reverse bias 
+                                when it is "off". Even though in the reverse bias quadrant the diode ideally passes no 
+                                signal, it passes a negligible amount (nA, nanoamperes) called reverse saturation current. 
+                                The saturation current of each diode is dependent on its semiconductor type. There is also 
+                                a case that a diode is overloaded into a "breakdown" stage where negative signal passes 
+                                inversely over the diode from cathode to anode.
+                            </p>
                             
-                            <p>The rectifier diode, a derivative of general semiconductor diodes, are often found in schematics under power supply subcircuits as they aid in coverting alternating current (AC) in to direct current for use in devices that run on fixed DC (e.g., guitar pedals). Outside of its aesthetic use, a specialty type of diode called a light-emitting diode (LED) is also found in audio applications—most specifically the optical compressor. When the threshold of the compressor is decreased, more signal is introduced into the unit causing the LED to light up. A coupled photoresistor (a light-sensitive resistor component) reacts by increasing its resistance and attenuating the output signal.</p>
+                            <p>The rectifier diode, a derivative of general semiconductor diodes, are often found in 
+                                schematics under power supply subcircuits as they aid in coverting alternating current (AC) 
+                                in to direct current for use in devices that run on fixed DC (e.g., guitar pedals). Outside 
+                                of its aesthetic use, a specialty type of diode called a light-emitting diode (LED) is also 
+                                found in audio applications—most specifically the optical compressor. When the threshold of
+                                the compressor is decreased, more signal is introduced into the unit causing the LED to light 
+                                up. A coupled photoresistor (a light-sensitive resistor component) reacts by increasing its 
+                                resistance and attenuating the output signal.
+                            </p>
                             <hr>
                         </section>
                         
                         <section id="appx_vtubes">
                             <h4>Vacuum tube</h4>
                             
-                            <p>Otherwise known as a thermionic valve, the vacuum tube—by definition—is a 
+                            <p>Also known as a thermionic valve, the vacuum tube—by definition—is a 
                                 component containing "two or more electrodes suspended in a glass bulb." [12] 
                                 The inside of the bulb has all air stripped from it, leaving only a vacuum. 
                                 Due to its coating during manufacturing, the cathode (or negatively charged electrode) 
@@ -1142,90 +1392,224 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                             </p>
                             
                             <img src="images/12AX7_IVChar.jpg" class="center" style="border: 3px solid black" width="550px">
-                            <div style="text-align-last: center;"><p><i class="center">Static anode characteristic plot of the ECC83/12AX7 dual-triode vacuum tube. See more <a href="https://www.onlypedals.com/solid-state-12ax7-tube-compared-with-traditional-12ax7-vacuum-tube">here</a>.</i></p></div>
+                            <div style="text-align-last: center;"><p><i class="center">Static anode characteristic plot of the ECC83/12AX7
+                                dual-triode vacuum tube. See more <a href="https://www.onlypedals.com/solid-state-12ax7-tube-compared-with-traditional-12ax7-vacuum-tube">here</a>.</i></p></div>
                             
-                            <p>Keeping in mind the single curve shown on a diode's I-V characteristic (or static anode characteristic), the triode's I-V plot contains a group of curves that show the nonlinear effects of voltage on the current dependent on different levels of inflicted negative voltage in the grid.</p>
+                            <p>Keeping in mind the single curve shown on a diode's I-V characteristic (or static anode characteristic), 
+                                the triode's I-V plot contains a group of curves that show the nonlinear effects of voltage on the current 
+                                dependent on different levels of inflicted negative voltage in the grid.
+                            </p>
                             <hr>
                         </section>
                         
                         <section id="appx_bjt">
                             <h4>Bipolar junction transistor (BJT)</h4>
-                            <p> [...]</p>
+                            <p>The predecessor of the MOS field-effect transistor (MOSFET), the bipolar junction transistor (BJT) offers switching and amplification while maintaining its high power, low noise characteristics. Of its three characteristic regions (e.g., active, saturated and cut-off), the BJT has a constant gain when in the active region, lending its use for amplification purposes as a linear component.</p>
+                            <img src="images/bjt_IV.jpg" class="center" style="border: 3px solid black" width="450px">
+                            <div style="text-align-last: center;"><p><i class="center">I-V plot of bipolar junction transistor. See more <a href="https://electronics.stackexchange.com/questions/685915/output-characteristics-of-a-bjt">here</a>.</i></p></div>
+                            <p>The BJT is a triode whose three terminals—the collector, base and emitter— are of alternating 
+                                doped types with the most common being an NPN BJT. Defined by a heavily doped emitter, a 
+                                P-type base, and an N-type collector, the NPN transistor maintains higher transconductance 
+                                and speed over its PNP counterpart. [20] The BJT can also be considered as two fused diodes 
+                                since we know that a diode is just a fused PN junction. Functionally, however, only one diode 
+                                is in use which is why the BJT's schematic emblem has an arrow at the emitter terminal.
+                            </p>
+                            
+                            <p>A BJT can conceptualized as a valve; for example, if a positive voltage exists across the 
+                                collector-emitter terminals of an NPN BJT, the low activation characteristic of these transistors 
+                                allows a small amount of current to trigger greater current flow from the collector to the emitter. 
+                                This ratio—notated as β or hFE—denotes the efficiency of a BJT by the current over the collector-emitter 
+                                terminal (I<sub>C</sub>) divided by the current from the base terminal ((I<sub>B</sub>). The hFE of a 
+                                BJT is almost always constant when in the active region which is dependent on the collector-emitter to 
+                                base current ratio. These characteristics, along with their aforementioned low noise and high power 
+                                especially at high frequencies, fit the context well for amplification of audio signals in solid-state 
+                                circuits.
+                            </p>
                             <hr>
                         </section>
                         
-                        <h4>Nodal analysis</h4>
-                        <p> [...]</p>
-                        <hr>
-                        
-                        <h4>Modified nodal analysis (MNA)</h4>
-                        <p> [...]</p>
-                        <hr>
-                        
-                        <h4>State-space modeling</h4>
-                        <p> [...]</p>
-                        <hr>
-                        
-                        <h4>Discrete-Kirchhoff (DK) method</h4>
-                        <p> [...]</p>
-                        <hr>
-                        
                         <section id="appx_vdi" class="">
                             <h4>Voltage divider</h4>
-                            <p>Voltage division, the result of a physical voltage divider, is the act of arranging passive linear components in a way that the output voltage (V<sub>out</sub>) is a fraction of its relative input voltage (V<sub>in</sub>). A general voltage divider example is a naive circuit where an output node is placed between series resistors. This is also known as the implementation of a resistive divider.</p>
-                            <p>While variable voltage dividers as potentiometers are most common in audio circuits, capacitors are also capable of creating voltage dividers. The RC lowpass filter used as a Point-To-Point™ circuit model is a voltage divider splitting a resistor and a capacitor tied to ground.</p>
+                            <p>Voltage division, the result of a physical voltage divider, is the act of arranging passive linear 
+                                components in a way that the output voltage (V<sub>out</sub>) is a fraction of its relative input 
+                                voltage (V<sub>in</sub>). A general voltage divider example is a naive circuit where an output node 
+                                is placed between series resistors. This is also known as the implementation of a resistive divider.
+                            </p>
+                            
+                            <p>While variable voltage dividers as potentiometers are most common in audio circuits, capacitors are 
+                                also capable of creating voltage dividers. The RC lowpass filter used as a Point-To-Point™ circuit 
+                                model is a voltage divider splitting a resistor and a capacitor tied to ground.
+                            </p>
                             <hr>
                         </section>
                         
                         <h4>Ohm's Law</h4>
-                        <p>Ohm's Law states that there is a linear relationship between the voltage drop over a component and the current going through it. This can be defined simply by</p>
+                        <p>Ohm's Law states that there is a linear relationship between the voltage drop over a component and the 
+                            current going through it. This can be defined simply by
+                        </p>
+                        
                         <div style="text-align-last: center;"><p><b><i>V = iR</i></b></p></div>
-                        <p>where <b><i>V</i></b> is voltage, <b><i>i</i></b> is current and <b><i>R</i></b> is resistance. If Ohm's Law is true, fixed resistance causes voltage and current to be proportional and fixed voltage causes current to be inversely proportional to its resistance. This law also can be rearranged to define resistance as <b><i>R = V / i</i></b>.</p>
+                        <p>where <b>V</b> is voltage, <b>i</b> is current and <b>R</b> is resistance. If Ohm's Law is true, fixed 
+                            resistance causes voltage and current to be proportional and fixed voltage causes current to be inversely 
+                            proportional to its resistance. This law also can be rearranged to define resistance as <b>R = V / i</b>.
+                        </p>
                         <hr>
                         
                         <h4>Kirchhoff's Voltage Law (KVL)</h4>
-                        <p>Kirchhoff's Voltage Law states that the sum of the voltages across components in a closed circuit is equal to <b><i>zero</i></b>. This can also be called the <b><i>loop law</i></b> or <b><i>Kirchhoff's second law</i></b>.</p>
+                        <p>Kirchhoff's Voltage Law states that the sum of the voltages across components in a closed circuit is equal 
+                            to <b>zero</b>. This can also be called the <b>loop law</b> or <b>Kirchhoff's second law</b>.
+                        </p>
                         
-                        <h5>Example: Series Resistors</h5>
                         <img src="images/KVL.svg" class="center" style="border: 3px solid black" width="350px">
-                        <div style="text-align-last: center;"><p><i class="center">Simple series resistor circuit with 9V input voltage.</i></p></div>
-                        <p>A basic circuit like the series resistor schematic above can easily display the law in action. A battery is supplying <b>9V</b> (DC) and we will use a current of <b><i>i</i> = 0.6A</b>. To determine if the voltage drops across each resistor will nullify our input voltage value, we use Ohm's Law over each component.</p>
+                        <div style="text-align-last: center;">
+                            <p><i class="center">Simple series resistor circuit with 9V input voltage.</i>
+                            </p>
+                        </div>
+                        
+                        <p>A basic circuit like the series resistor schematic above can easily display the law in action. A battery 
+                            is supplying <b>9V</b> (DC) and we will use a current of <b><i>i</i> = 0.6A</b>. To determine if the 
+                            voltage drops across each resistor will nullify our input voltage value, we use Ohm's Law over each 
+                            component.
+                        </p>
+                        
                         <div style="text-align-last: center;">
                             <ul>
                                 <li>R1 → V = 0.6 <b>&sdot;</b> 5 = <b>3V</b></li>
                                 <li>R2 → V = 0.6 <b>&sdot;</b> 10 = <b>6V</b></li>
                             </ul>
                         </div>
-                        <p>When the current over a component goes from positive to negative, this will be deemed a voltage drop with the polarity represented as negative.</p>
+                        <p>When the current over a component goes from positive to negative, this will be deemed a voltage drop 
+                            with the polarity represented as negative.
+                        </p>
+                        
                         <div style="text-align-last: center;">
                             <ul>
                                 <li>ΣV → 9V (battery) - 3V - 6V = <b>0V</b></li>
                             </ul>
                         </div>
-                        <p>While there are edge cases where KVL is not applicable, the general audio circuit will most likely always satisfy this principle.</p>
+                        
+                        <p>While there are edge cases where KVL is not applicable, the general audio circuit will most likely 
+                            always satisfy this principle.
+                        </p>
                         <hr>
                         
                         <h4>Sallen-Key filter</h4>
-                        <p>The Sallen-Key topology supports second-order active filters. It is a degenerate of the voltage-controlled voltage-source filter (VCVS) topology, meaning that it is derived from a limiting case of the VCVS topology where one element—in this case, an infinite input impedance and zero output impedance—to implement 2-pole lowpass, highpass or bandpass filters. The filter, designed by R.P. Sallen and E.L. Key at the MIT Lincoln Laboratory (1955), utilizes a unity gain amplifier.</p>
+                        <p>The Sallen-Key topology supports second-order active filters. It is a degenerate of the voltage-controlled 
+                            voltage-source filter (VCVS) topology, meaning that it is derived from a limiting case of the VCVS topology 
+                            where one element—in this case, an infinite input impedance and zero output impedance—to implement 2-pole 
+                            lowpass, highpass or bandpass filters. The filter, designed by R.P. Sallen and E.L. Key at the MIT Lincoln 
+                            Laboratory (1955), utilizes a unity gain amplifier.
+                        </p>
                         
                         <img src="images/SallenKeyUGBuffer.svg" class="center" style="border: 3px solid black" width="400px">
-                        <div style="text-align-last: center;"><p><i class="center">Sallen-Key filter. See more <a href="https://www.rose-hulman.edu/class/ee/hoover/ece554_1/Lectures/Part%204%20OP%20AMPS/Sallen%E2%80%93Key%20topology%20-%20Wikipedia,%20the%20free%20encyclopedia.htm">here</a>.</i></p></div>
+                        <div style="text-align-last: center;"><p><i class="center">Sallen-Key filter. See more <a href="https://www.rose-hulman.edu/class/ee/hoover/ece554_1/Lectures/Part%204%20OP%20AMPS/Sallen%E2%80%93Key%20topology%20-%20Wikipedia,%20the%20free%20encyclopedia.html">here</a>.</i></p></div>
 
-                        <p>An amplification factor of 1 may not be beneficial for a signal boost, but the unit gain amplifier acts as a voltage buffer which prevents one amplification stage's input impedance from affecting the output impedance of a separate amplification stage. [16]</p>
+                        <p>An amplification factor of 1 may not be beneficial for a signal boost, but the unit gain amplifier acts 
+                            as a voltage buffer which prevents one amplification stage's input impedance from affecting the output 
+                            impedance of a separate amplification stage. [16]
+                        </p>
+                        
+                        <p>Sallen-Key filters are a biquad filter type.</p>
                         <hr>
                         
-                        <h4>State-variable filter</h4>
-                        <p> [...]</p>
+                        <h4>State variable filter</h4>
+                        <p>An analog filter that offers variable frequency cutoff (f<sub>c</sub>), gain (A), and resonance (Q), 
+                            the state variable filter is often constructed with three operational amplifiers and offers lowpass, 
+                            highpass, and bandpass output taps. A fourth op-amp is optional to include the notch filter response. 
+                            The three op-amp design is comprised of two identical op-amp integrators that each act as a first-order, 
+                            single pole lowpass filter with the third op-amp acting as a summing amplifier where filter gain and 
+                            damping are determined. [17]
+                        </p>
+                        
+                        <p>State variable filters are a biquad filter type.</p>
                         <hr>
                         
-                        <h4>Twin filter</h4>
-                        <p> [...]</p>
+                        <h4>Twin-T filter</h4>
+                        <p>The Twin-T filter topology is a network designed to provide notch responses of high attenuation gain with 
+                            only two operational amplifiers.
+                        </p>
+                        
                         <hr>
                         
                         <h4>Biquad filter</h4>
-                        <p> [...]</p>
+                        <p>Biquadratic filters, often shortened to "biquad", are an analog filter topology whose transfer function is 
+                            two quadratic equations— one in the numerator and one in denominator—resulting in a two-pole, two-zero 
+                            filter. The biquad transfer function is used as a general form with Sallen-Key and state variable filters 
+                            being rearrangable into this form.
+                        </p>
+                        
+                        <img src="images/biquad.jpg" class="center" style="border: 3px solid black" width="450px">
+                        <div style="text-align-last: center;">
+                            <p><i class="center">Digital biquad transfer function and block diagram. 
+                                See more <a href="https://www.minidsp.com/applications/advanced-tools/advanced-biquad-programming">here</a>.</i>
+                            </p>
+                        </div>
+                        
+                        <p>Seen commonly in audio software, the discrete model of the analog biquad can be found using the bilinear 
+                            z-transform, utilizing feedforward coefficients (<i>b<sub>1-2</sub></i>) and feedback coefficients 
+                            (<i>a<sub>1-2</sub></i>) of no more than two samples in memory.
+                        </p>
                         <hr>
                         
+                        <h4>Nodal analysis</h4>
+                        <p>Nodal analysis is a circuit solving technique where—by assigning a reference 
+                            (that is ideally ground)—<b>Kirchhoff's Current Law (KCL)</b> can be used to solve 
+                            unknown voltages at nodes using known component relationships. <b>Kirchhoff's 
+                            Voltage Law (KVL)</b> is automatically satisfied when using this technique.
+                        </p>
+                                                
+                        <p>This type of analysis is most often used to describe <b>linear time-invariant 
+                            (LTI)</b> systems as nodal analysis is based on the principle that some input 
+                            voltage is related to some output voltage by node voltages defined as linear 
+                            relationships. Conversely, to describe a nonlinear component—like an ideal diode, 
+                            strong assumptions have to be made regarding its bias state to solve even just a 
+                            single state of the circuit. Other general solvers—like the <b>Newton-Raphson 
+                            method</b>—can be used to approximate the behavior of a nonlinear element.
+                        </p>
+                        
+                        <ul>
+                            <li>The following steps are considered:</li>
+                            <li><span class="barcode">      1. Establish reference node (preferrably ground).</span></li>
+                            <li><span class="barcode">      2. Name the remaining nodes with respsective currents.</span></li>
+                            <li><span class="barcode">      3. Use <b>Kirchhoff's Current Law (KCL)</b> for nodes not adjacent to a voltage source.</span></li>
+                            <li><span class="barcode">      4. Solve for unknown voltages.</span></li>
+                            <li><span class="barcode"> </span></li> <!-- empty -->
+                            <li><span class="barcode"> See more <a href="https://lpsa.swarthmore.edu/Systems/Electrical/mna/MNA2.html">here</a>.</span></li> <!-- empty -->
+                        </ul>
+                        <hr>
+                        
+                        <h4>Modified nodal analysis (MNA)</h4>
+                        <p>Modified nodal analysis is an expansion of standard nodal analysis via the use of 
+                            matrix transformations to relieve difficulty when voltage-defined components 
+                            are present in a circuit. Note that basic nodal analysis is only applicable in 
+                            circuit networks where branch currents can be expressed in terms of branch voltages.
+                        </p>
+                        <p>The system of equations in MNA are expressed as <b>b = A &sdot; x</b> where 
+                            <b>b</b> are the <b>input voltages</b> (represented as an Nx1 matrix), <b>A</b> is the 
+                            <b>admittance matrix of our nodes</b> from nodal analysis (represented as an NxN matrix), 
+                            and <b>x</b> are the <b>unknown voltages</b> and <b>I<sub>1</sub> current</b>.
+                        </p>
+                        <p>To extract a systems transfer function, the matrix must be solved in a form 
+                            that expresses such a relationship. For our base form, <b>b = A &sdot; x</b> 
+                            should be expressed as <b>x = A<sup>-1</sup> &sdot; b</b>.
+                        </p>
+                        <hr>
+                        
+                        <h4>State-space modeling</h4>
+                        <p>State-space modeling (and its subsequent representation) is a method for modeling linear 
+                            time-invariant (LTI) dynamic systems using a generalized first-order form of <b>ẋ = <i>A</i>x + 
+                            <i>B</i>u</b> which is based on a pair of assumptions that most physical systems are nonlinear but
+                            that the linearization used in system approximation allows us to use a first-order linear equation
+                            when modeling. The state-space representation has an output equation of <b>y = <i>C</i>x + <i>D</i>u.</b>
+                            For both equations of the standard form, <b>A-D</b> are scalars or matrices, <b>x</b> is our state 
+                            vector and <b>u</b> is our input. For use in audio circuit modeling, the discretized version of state-space
+                            modeling is used.
+                        </p>
+                        <p>State-space offers benefits over modified nodal analysis as MNA unfortunately requires the constant 
+                            computation of an inverse matrix, restricting models from being parameterizable without being computationally
+                            gouging.</p>
+                        <hr>
+                                                
                     </section>
                     <!-- end section -->
                     
@@ -1239,24 +1623,32 @@ o.layout.Tube12AX7s = [TUBE1; TUBE2; TUBE3; <span style="color: grey">...</span>
                         </div>
                         <!-- end row -->
                         
-                        <ul>
-                            <li>[1] <a href="https://www.watfordvalves.com/products.asp?ID=1&man=42">https://www.watfordvalves.com/products.asp?ID=1&amp;man=42</a></li>
-                            <li>[2] <a href="https://www.e-education.psu.edu/ae868/node/967">https://www.e-education.psu.edu/ae868/node/967</a></li>
-                            <li>[3] <a href="https://openbooks.library.umass.edu/funee/chapter/3-2/">https://openbooks.library.umass.edu/funee/chapter/3-2/</a></li>
-                            <li>[4] <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2023S/electricity/kirchhoff.html">https://weinman.cs.grinnell.edu/courses/CSC211/2023S/electricity/kirchhoff.html</a></li>
-                            <li>[5] <a href="https://sites.pitt.edu/~qiw4/Academic/ME2082/Transistor%20Basics.pdf">https://sites.pitt.edu/~qiw4/Academic/ME2082/Transistor%20Basics.pdf</a></li>
-                            <li>[6] <a href="https://openlab.citytech.cuny.edu/emtlabs/potentiometer/">https://openlab.citytech.cuny.edu/emtlabs/potentiometer/</a></li>
-                            <li>[7] <a href="https://physics.wwu.edu/variable-resistor">https://physics.wwu.edu/variable-resistor</a></li>
-                            <li>[8] <a href="https://www.cpp.edu/faculty/fkhoshnoud/lecture-32.pdf">https://www.cpp.edu/faculty/fkhoshnoud/lecture-32.pdf</a></li>
-                            <li>[9] <a href="https://resources.pcb.cadence.com/blog/2019-what-is-linear-and-nonlinear-resistance">https://resources.pcb.cadence.com/blog/2019-what-is-linear-and-nonlinear-resistance</a></li>
-                            <li>[10] <a href="https://web.stanford.edu/class/archive/engr/engr40m.1178/slides/signals.pdf">https://web.stanford.edu/class/archive/engr/engr40m.1178/slides/signals.pdf</a></li>
-                            <li>[11] <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html">https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html</a></li>
-                            <li>[12] <a href="https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf">https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf</a></li>
-                            <li>[13] <a href="https://lehman.edu/faculty/anchordoqui/lab2.pdf">https://lehman.edu/faculty/anchordoqui/lab2.pdf</a></li>
-                            <li>[14] <a href="https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html">https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html</a></li>
-                            <li>[15] <a href="https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html">https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html</a></li>
-                            <li>[16] <a href="https://ultimateelectronicsbook.com/op-amp-voltage-buffer/">https://ultimateelectronicsbook.com/op-amp-voltage-buffer/</a></li>
-                        </ul> 
+                        <details><summary>[ ... ]</summary>
+                            <ul>
+                                <li>[1] <a href="https://www.watfordvalves.com/products.asp?ID=1&man=42">https://www.watfordvalves.com/products.asp?ID=1&amp;man=42</a></li>
+                                <li>[2] <a href="https://www.e-education.psu.edu/ae868/node/967">https://www.e-education.psu.edu/ae868/node/967</a></li>
+                                <li>[3] <a href="https://openbooks.library.umass.edu/funee/chapter/3-2/">https://openbooks.library.umass.edu/funee/chapter/3-2/</a></li>
+                                <li>[4] <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2023S/electricity/kirchhoff.html">https://weinman.cs.grinnell.edu/courses/CSC211/2023S/electricity/kirchhoff.html</a></li>
+                                <li>[5] <a href="https://sites.pitt.edu/~qiw4/Academic/ME2082/Transistor%20Basics.pdf">https://sites.pitt.edu/~qiw4/Academic/ME2082/Transistor%20Basics.pdf</a></li>
+                                <li>[6] <a href="https://openlab.citytech.cuny.edu/emtlabs/potentiometer/">https://openlab.citytech.cuny.edu/emtlabs/potentiometer/</a></li>
+                                <li>[7] <a href="https://physics.wwu.edu/variable-resistor">https://physics.wwu.edu/variable-resistor</a></li>
+                                <li>[8] <a href="https://www.cpp.edu/faculty/fkhoshnoud/lecture-32.pdf">https://www.cpp.edu/faculty/fkhoshnoud/lecture-32.pdf</a></li>
+                                <li>[9] <a href="https://resources.pcb.cadence.com/blog/2019-what-is-linear-and-nonlinear-resistance">https://resources.pcb.cadence.com/blog/2019-what-is-linear-and-nonlinear-resistance</a></li>
+                                <li>[10] <a href="https://web.stanford.edu/class/archive/engr/engr40m.1178/slides/signals.pdf">https://web.stanford.edu/class/archive/engr/engr40m.1178/slides/signals.pdf</a></li>
+                                <li>[11] <a href="https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html">https://weinman.cs.grinnell.edu/courses/CSC211/2025S/electricity/diodes.html</a></li>
+                                <li>[12] <a href="https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf">https://tubes.mit.edu/6S917/_static/2024/resources/des_preamps_chap_1.pdf</a></li>
+                                <li>[13] <a href="https://lehman.edu/faculty/anchordoqui/lab2.pdf">https://lehman.edu/faculty/anchordoqui/lab2.pdf</a></li>
+                                <li>[14] <a href="https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html">https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html</a></li>
+                                <li>[15] <a href="https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html">https://www.electronics-tutorials.ws/dccircuits/kirchhoffs-voltage-law.html</a></li>
+                                <li>[16] <a href="https://ultimateelectronicsbook.com/op-amp-voltage-buffer/">https://ultimateelectronicsbook.com/op-amp-voltage-buffer/</a></li>
+                                <li>[17] <a href="https://www.electronics-tutorials.ws/filter/state-variable-filter.html">https://www.electronics-tutorials.ws/filter/state-variable-filter.html</a></li>
+                                <li>[18] <a href="https://www.ti.com/lit/an/slyt145/slyt145.pdf">https://www.ti.com/lit/an/slyt145/slyt145.pdf</a></li>
+                                <li>[19] <a href="https://www.analog.com/en/resources/technical-articles/a-beginners-guide-to-filter-topologies.html">https://www.analog.com/en/resources/technical-articles/a-beginners-guide-to-filter-topologies.html</a></li>
+                                <li>[20] <a href="https://www.chu.berkeley.edu/wp-content/uploads/2020/01/Chenming-Hu_ch8-2.pdf">https://www.chu.berkeley.edu/wp-content/uploads/2020/01/Chenming-Hu_ch8-2.pdf</a></li>
+                                <li>[21] <a href="https://lpsa.swarthmore.edu/Systems/Electrical/mna/MNA2.html">https://lpsa.swarthmore.edu/Systems/Electrical/mna/MNA2.html</a></li>
+                                <li>[22] <a href="https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&section=SystemModeling">https://ctms.engin.umich.edu/CTMS/index.php?example=Introduction&amp;section=SystemModeling</a></li>
+                            </ul> 
+                        </details>
                         <!-- end list -->
                         
                     </section>
