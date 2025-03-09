@@ -297,17 +297,12 @@ a:hover {
     color: #0E97EE;
 }
 
-.intro2 i {
-    padding-right: 10px;
-    font-size: 21px;
-}
-
 .intro2 {
     background-color: #0E97EE;
     border: 2px solid #2187BB;
     border-radius: 5px;
     color: #ffffff;
-    font-style: italic;
+    font-style: normal;
     padding: 10px 20px;
 }
 
