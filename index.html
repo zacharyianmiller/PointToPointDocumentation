@@ -894,7 +894,7 @@ public:
     ~RCLPF() {};
 };
 </pre>
-
+                        
                         <p>Taking from the settings paramteres in our XML circuit template, we will also define 
                             the position of our circuit elements all in one place. It is important that all pertinent 
                             elements are assigned to the <b><i>layout</i></b> object and that elements—no matter the 
@@ -1064,6 +1064,26 @@ layout.hasDCBlocker = false; <span style="color: grey">// if false, can be omitt
 
 circuit = CircuitModel(layout);
 </pre>
+                        <br>
+                        <h5>Using the JUCE Framework</h5>
+                        <p>To get started in JUCE, a few definitions need to be made inside the main Projucer 
+                            settings as well as the individual exporter settings. Inside the project settings,
+                            set the following preprocessor definition:</p>
+                        
+                        <pre>JUCE_MODAL_LOOPS_PERMITTED=1</pre>
+                        
+                        <p>In the <b>Exporter</b> section of your main IDE, set <b>External Libraries To Link</b> to 
+                            <b>CircuitModel</b>. In the respective debug and release sections, set <b>Header 
+                            Search Paths</b> to:
+                        </p>
+                        
+                        <pre>../../sdks/PointToPoint/inc</pre>
+
+                        <p>and <b>Extra Library Search Paths</b> to:</p>
+                        
+                        <pre>../../sdks/PointToPoint/lib/Debug</pre>
+                        <pre>../../sdks/PointToPoint/lib/Release</pre>
+                        
                         <p> </p>
                         <h4 id="line5_4">MATLAB</h4>
                         <p>The MATLAB version of the Point-To-Point™ library is a 1:1 functional 
